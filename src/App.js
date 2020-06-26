@@ -15,12 +15,12 @@ import ArtworkDetail from './components/Artwork/ArtworkDetail';
 function App() {
 	return (
 		<>
-			{/* <Route
+			<Route
 				path='*'
 				render={() => {
 					return <NavBar />;
 				}}
-			/> */}
+			/>
 			<main>
 				<Route exact path='/' component={Home} />
 			</main>
