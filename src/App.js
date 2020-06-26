@@ -1,26 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route } from 'react-router-dom';
+
+//misc. components
+import NavBar from './components/NavBar/Navbar';
+import Home from './components/Home/Home';
+import Footer from './components/Footer/Footer';
+
+//artwork
+import ArtworkCategory from './components/Artwork/ArtworkCategory';
+import ArtworkCreate from './components/Artwork/ArtworkCreate';
+import ArtworkUpdate from './components/Artwork/ArtworkCreate';
+import ArtworkDetail from './components/Artwork/ArtworkDetail';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<>
+			{/* <Route
+				path='*'
+				render={() => {
+					return <NavBar />;
+				}}
+			/> */}
+			<main>
+				<Route exact path='/' component={Home} />
+			</main>
+			<footer>
+				{/* <Route path='*' component={Footer} /> */}
+			</footer>
+		</>
+	);
 }
 
 export default App;
