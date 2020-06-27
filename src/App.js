@@ -7,10 +7,11 @@ import Home from './components/Home/Home';
 import Footer from './components/Footer/Footer';
 
 //artwork
-import ArtworkCategory from './components/Artwork/ArtworkCategory';
+import ArtworkCategorySub from './components/Artwork/ArtworkCategorySub';
 import ArtworkCreate from './components/Artwork/ArtworkCreate';
 import ArtworkUpdate from './components/Artwork/ArtworkCreate';
 import ArtworkDetail from './components/Artwork/ArtworkDetail';
+import ArtworkAll from './components/Artwork/ArtworkAll'
 
 function App() {
 	return (
@@ -23,10 +24,26 @@ function App() {
 			/>
 			<main>
 				<Route exact path='/' component={Home} />
+				<Route
+					path='/artwork-category/:category'
+					render={() => {
+						return <ArtworkCategorySub />;
+					}}
+				/>
+				<Route
+					path='/artwork-create'
+					render={() => {
+						return <ArtworkCreate />;
+					}}
+				/>{' '}
+				<Route
+					path='/artwork-all'
+					render={() => {
+						return <ArtworkAll />;
+					}}
+				/>
 			</main>
-			<footer>
-				{/* <Route path='*' component={Footer} /> */}
-			</footer>
+			<footer>{/* <Route path='*' component={Footer} /> */}</footer>
 		</>
 	);
 }

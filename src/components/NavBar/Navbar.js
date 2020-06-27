@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import {
 	MDBNavbar,
 	MDBNavbarBrand,
@@ -13,7 +14,6 @@ import {
 	MDBDropdownMenu,
 	MDBDropdownItem,
 } from 'mdbreact';
-import { BrowserRouter as Router } from 'react-router-dom';
 
 class NavbarPage extends Component {
 	state = {
@@ -26,41 +26,61 @@ class NavbarPage extends Component {
 
 	render() {
 		return (
-			<Router>
-				<MDBNavbar color='light-blue' dark expand='md' id='navbar'>
-					<MDBNavbarBrand>
-						<strong className='nav-caption'>Joel Spector</strong>
-					</MDBNavbarBrand>
-					<MDBNavbarToggler onClick={this.toggleCollapse} />
-					<MDBCollapse id='navbarCollapse3' isOpen={this.state.isOpen} navbar>
-						<MDBNavbarNav right>
-							<MDBNavItem active>
-								<MDBNavLink to='#!'>Home</MDBNavLink>
-							</MDBNavItem>
-							<MDBNavItem>
-								<MDBNavLink to='#!'>The Joel Spector Foundation</MDBNavLink>
-							</MDBNavItem>
+			<MDBNavbar color='light-blue' dark expand='md' id='navbar'>
+				<MDBNavbarBrand>
+					<strong className='nav-caption'>Joel Spector</strong>
+				</MDBNavbarBrand>
+				<MDBNavbarToggler onClick={this.toggleCollapse} />
+				<MDBCollapse id='navbarCollapse3' isOpen={this.state.isOpen} navbar>
+					<MDBNavbarNav left>
+						<MDBNavItem>
+							<MDBNavLink to='/'>Home</MDBNavLink>
+						</MDBNavItem>
+						<MDBNavItem>
+							<MDBDropdown>
+								<MDBDropdownToggle nav caret>
+									<span className='mr-2'>Artwork</span>
+								</MDBDropdownToggle>
+								<MDBDropdownMenu>
+									<MDBDropdownItem className='nav-dropdown-item'>
+										{' '}
+										<Link to='/artwork-category/portraits'>Portraits</Link>
+									</MDBDropdownItem>
 
-							<MDBNavItem>
-								<MDBDropdown>
-									<MDBDropdownToggle nav caret>
-										<span className='mr-2'>Artwork</span>
-									</MDBDropdownToggle>
-									<MDBDropdownMenu>
-										<MDBDropdownItem href='#!'>Portraits</MDBDropdownItem>
-										<MDBDropdownItem href='#!'>Paintings</MDBDropdownItem>
-										<MDBDropdownItem href='#!'>Silverpoint</MDBDropdownItem>
-										<MDBDropdownItem href='#!'>Works on Paper</MDBDropdownItem>
-									</MDBDropdownMenu>
-								</MDBDropdown>
-							</MDBNavItem>
-							<MDBNavItem>
-								<MDBNavLink to='#!'>Merchandise</MDBNavLink>
-							</MDBNavItem>
-						</MDBNavbarNav>
-					</MDBCollapse>
-				</MDBNavbar>
-			</Router>
+									<MDBDropdownItem className='nav-dropdown-item'>
+										<Link to='/artwork-category/paintings'>Paintings</Link>
+									</MDBDropdownItem>
+
+									<MDBDropdownItem className='nav-dropdown-item'>
+										<Link to='/artwork-category/silverpoint'>Silverpoint</Link>
+									</MDBDropdownItem>
+
+									<MDBDropdownItem className='nav-dropdown-item'>
+										<Link to='/artwork-category/woks-on-paper'>
+											Works on Paper
+										</Link>
+									</MDBDropdownItem>
+
+									<MDBDropdownItem className='nav-dropdown-item'>
+										<Link to='artwork-all'>All Works</Link>
+									</MDBDropdownItem>
+
+									<MDBDropdownItem className='nav-dropdown-item'>
+										<Link to='artwork-create'>Add (+)</Link>
+									</MDBDropdownItem>
+								</MDBDropdownMenu>
+							</MDBDropdown>
+						</MDBNavItem>
+						<MDBNavItem>
+							<MDBNavLink to='#!'>The Joel Spector Foundation</MDBNavLink>
+						</MDBNavItem>
+
+						<MDBNavItem>
+							<MDBNavLink to='#!'>Merchandise</MDBNavLink>
+						</MDBNavItem>
+					</MDBNavbarNav>
+				</MDBCollapse>
+			</MDBNavbar>
 		);
 	}
 }
