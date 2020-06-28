@@ -112,10 +112,6 @@ body {
 	border-bottom: 1px solid black;
 }
 
-.nav-dropdown-item > *:active {
-	background: white;
-}
-
 /* Subnav */
 
 .subnav-container {
@@ -137,8 +133,8 @@ body {
 	margin-top: 2rem;
 }
 
-.subnav-left > *,
-.subnav-right > * {
+.subnav-left > a,
+.subnav-right > a {
 	margin: 0.5vmin;
 	padding: 0.5vmin 2vmin;
 	transition: 1s;
@@ -148,8 +144,90 @@ body {
 	color: rgb(81, 83, 119);
 }
 
+/* Artwork Form */
+
+.artwork-form-container {
+	display: grid;
+	align-items: center;
+	justify-content: center;
+	margin-top: 2rem;
+	padding: 2vmin 20vmin;
+}
+
+.artwork-form-heading {
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
+
+	background: rgba(162, 204, 252, 0.342);
+	border-radius: 1ch;
+	text-align: center;
+}
+
+.artwork-form-subheading {
+	font-size: 3vmin;
+	padding: 2vmin 0;
+	text-align: center;
+}
+
+.artwork-form-form {
+	display: grid;
+}
+
+.artwork-form-form button {
+	margin: 2rem 0;
+}
+
+.artwork-form-form > label {
+	margin-top: 1.5rem;
+}
+
+#description-label {
+	margin-top: 0;
+}
+
+.size-inputs {
+	display: flex;
+	justify-content: left;
+	align-items: left;
+}
+
+.size-inputs-labels > *,
+.size-inputs-inputs > * {
+	margin-bottom: 2vmin;
+}
+
+.size-inputs-inputs {
+	display: grid;
+	padding-left: 2vmin;
+}
+
+.size-inputs-labels {
+	display: grid;
+}
+
 @media (min-width: 1550px) {
 	.home-artist-statement {
 		max-width: 56vw;
+	}
+}
+
+@media (min-width: 900px) {
+	.size-inputs {
+		justify-content: center;
+		align-items: center;
+	}
+	.size-inputs-inputs > * {
+		width: 30vw;
+	}
+}
+
+@media (max-width: 800px) {
+	.subnav-left > a,
+	.subnav-right > a {
+		font-size: 1rem;
+	}
+	.size-inputs-inputs,
+	.size-inputs-labels {
+		display: grid;
 	}
 }

@@ -11,9 +11,26 @@ import ArtworkCategorySub from './components/Artwork/ArtworkCategorySub';
 import ArtworkCreate from './components/Artwork/ArtworkCreate';
 import ArtworkUpdate from './components/Artwork/ArtworkCreate';
 import ArtworkDetail from './components/Artwork/ArtworkDetail';
-import ArtworkAll from './components/Artwork/ArtworkAll'
+import ArtworkAll from './components/Artwork/ArtworkAll';
 
-function App() {
+const App = () => {
+	
+	// convert data to Title Case
+	function toTitleCase(str) {
+		return str
+			.replace(/([a-z])([A-Z])/g, function (
+				allMatches,
+				firstMatch,
+				secondMatch
+			) {
+				return firstMatch + ' ' + secondMatch;
+			})
+			.toLowerCase()
+			.replace(/([ -_]|^)(.)/g, function (allMatches, firstMatch, secondMatch) {
+				return (firstMatch ? ' ' : '') + secondMatch.toUpperCase();
+			});
+	}
+
 	return (
 		<>
 			<Route
@@ -33,7 +50,7 @@ function App() {
 				<Route
 					path='/artwork-create'
 					render={() => {
-						return <ArtworkCreate />;
+						return <ArtworkCreate toTitleCase={toTitleCase} />;
 					}}
 				/>{' '}
 				<Route
