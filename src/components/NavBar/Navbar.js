@@ -71,13 +71,13 @@ class NavbarPage extends Component {
 								</MDBDropdownMenu>
 							</MDBDropdown>
 						</MDBNavItem>
-						<MDBNavItem>
+						{/* <MDBNavItem>
 							<MDBNavLink to='#!'>The Joel Spector Foundation</MDBNavLink>
 						</MDBNavItem>
 
 						<MDBNavItem>
 							<MDBNavLink to='#!'>Merchandise</MDBNavLink>
-						</MDBNavItem>
+						</MDBNavItem> */}
 					</MDBNavbarNav>
 				</MDBCollapse>
 			</MDBNavbar>
