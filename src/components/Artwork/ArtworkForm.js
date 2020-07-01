@@ -38,12 +38,12 @@ const ArtworkForm = (props) => {
 			<label>Image URL</label>
 			<div className='size-inputs'>
 				<div className='size-inputs-labels'>
-					<label>Low Resolution (optional):</label>
 					<label>High Resolution:</label>
+					<label>Low (optional):</label>
 				</div>
 				<div className='size-inputs-inputs'>
-					<input onChange={props.handleChange} name='imgUrlLo'></input>{' '}
 					<input required onChange={props.handleChange} name='imgUrlHi'></input>{' '}
+					<input onChange={props.handleChange} name='imgUrlLo'></input>{' '}
 				</div>
 			</div>
 			<label>Date</label>

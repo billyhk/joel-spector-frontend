@@ -8,6 +8,7 @@ const ArtworkSubcategory = (props) => {
             <Route path='*' render={() => {
 				return <ArtworkCategoryNav/>
 			}}/>
+			
 		</div>
 	);
 };

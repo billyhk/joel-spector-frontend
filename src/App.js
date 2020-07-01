@@ -59,7 +59,7 @@ const App = () => {
 				{/* <Route
 						path='/artwork/:id'
 						render={(routerProps) => {
-							return <ArtworkDetail {...routerProps} scrollUp={scrollUp}/> toTitleCase={toTitleCase};
+							return <ArtworkDetail {...routerProps} scrollUp={scrollUp} toTitleCase={toTitleCase};
 						}}
 					/> */}
 				{/* <Route
@@ -72,7 +72,7 @@ const App = () => {
 				<Route
 					path='/artwork-all'
 					render={() => {
-						return <ArtworkAll />;
+						return <ArtworkAll toTitleCase={toTitleCase} />;
 					}}
 				/>
 			</main>
