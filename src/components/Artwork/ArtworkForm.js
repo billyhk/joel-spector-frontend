@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { createHashHistory } from 'history';
 
 const ArtworkForm = (props) => {
+	const history = createHashHistory();
+
 	useEffect(() => {
 		props.setSecondDropdown(false);
 		// eslint-disable-next-line
@@ -15,11 +18,12 @@ const ArtworkForm = (props) => {
 					<label className='form-label'>Artwork Subcategory</label>
 					<select
 						required
-						name='artworkCategory'
+						name='artworkSubcategory'
 						className='form-input'
 						id='artworkSubcategoryInput'
 						onChange={(event) => {
 							props.handleSecondaryDropdownSelect(event);
+							props.handleChange(event);
 						}}>
 						{' '}
 						<option selected disabled hidden>
@@ -32,10 +36,16 @@ const ArtworkForm = (props) => {
 			<label>Title</label>
 			<input required onChange={props.handleChange} name='title'></input>
 			<label>Image URL</label>
-			<input
-				required
-				onChange={props.handleChange}
-				name='imageUrl'></input>{' '}
+			<div className='size-inputs'>
+				<div className='size-inputs-labels'>
+					<label>Low Resolution (optional):</label>
+					<label>High Resolution:</label>
+				</div>
+				<div className='size-inputs-inputs'>
+					<input onChange={props.handleChange} name='imgUrlLo'></input>{' '}
+					<input required onChange={props.handleChange} name='imgUrlHi'></input>{' '}
+				</div>
+			</div>
 			<label>Date</label>
 			<input
 				required
@@ -61,10 +71,16 @@ const ArtworkForm = (props) => {
 						name='sizeWidth'></input>
 				</div>
 			</div>
-			<label id='description-label'>Description (optional)</label>
+			<label>Description (optional)</label>
 			<input onChange={props.handleChange} name='description'></input>
 			<button className='btn btn-blue' type='submit'>
 				Submit
+			</button>
+			<button
+				className='btn btn-dark'
+				id='cancel-button'
+				onClick={history.goBack}>
+				Cancel and Go Back
 			</button>
 		</>
 	);

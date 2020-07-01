@@ -1,9 +1,10 @@
 export const artwork = [
 	{
         id: 1,
-        artworkCategory: 'Paintings: Group',
+        artworkCategory: 'Paintings',
+        artworkSubcategory: 'Group',
         title: '',
-        imageUrl: '',
+        imgUrl: '',
         date: '',
         sizeHeight: '',
         sizeWidth: '',

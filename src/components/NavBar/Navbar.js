@@ -62,11 +62,11 @@ class NavbarPage extends Component {
 									</MDBDropdownItem>
 
 									<MDBDropdownItem className='nav-dropdown-item'>
-										<Link to='artwork-all'>All Works</Link>
+										<Link to='/artwork-all'>All Works</Link>
 									</MDBDropdownItem>
 
 									<MDBDropdownItem className='nav-dropdown-item'>
-										<Link to='artwork-create'>Add (+)</Link>
+										<Link to='/artwork-create'>Add (+)</Link>
 									</MDBDropdownItem>
 								</MDBDropdownMenu>
 							</MDBDropdown>

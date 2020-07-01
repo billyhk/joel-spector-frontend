@@ -13,3 +13,11 @@ const ArtworkSubcategory = (props) => {
 };
 
 export default ArtworkSubcategory;
+/*
+// filter by category
+
+let portraitsIndividual = artwork.filter((work) => work.artworkCategory === 'portraits' && work.subCategory === 'individual')
+
+
+
+*/

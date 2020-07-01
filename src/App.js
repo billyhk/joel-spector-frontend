@@ -14,7 +14,10 @@ import ArtworkDetail from './components/Artwork/ArtworkDetail';
 import ArtworkAll from './components/Artwork/ArtworkAll';
 
 const App = () => {
-	
+	function scrollUp() {
+		window.scrollTo(0, 0);
+	}
+
 	// convert data to Title Case
 	function toTitleCase(str) {
 		return str
@@ -52,7 +55,20 @@ const App = () => {
 					render={() => {
 						return <ArtworkCreate toTitleCase={toTitleCase} />;
 					}}
-				/>{' '}
+				/>
+				{/* <Route
+						path='/artwork/:id'
+						render={(routerProps) => {
+							return <ArtworkDetail {...routerProps} scrollUp={scrollUp}/> toTitleCase={toTitleCase};
+						}}
+					/> */}
+				{/* <Route
+						path='/artwork/:id/edit'
+						render={(routerProps) => {
+							return <ArtworkUpdate {...routerProps} scrollUp={scrollUp}/>;
+						}}
+					/> */}
+
 				<Route
 					path='/artwork-all'
 					render={() => {
@@ -63,6 +79,6 @@ const App = () => {
 			<footer>{/* <Route path='*' component={Footer} /> */}</footer>
 		</>
 	);
-}
+};
 
 export default App;

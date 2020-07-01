@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, Redirect } from 'react-router-dom';
 import { APIURL } from '../../config';
 
 import ArtworkCategoryNav from './ArtworkCategoryNav';
@@ -8,8 +8,10 @@ import ArtworkForm from './ArtworkForm';
 const ArtworkCreate = (props) => {
 	const initialArtworkState = {
 		artworkCategory: '',
+		artworkSubcategory: '',
 		title: '',
-		imageUrl: '',
+		imgUrlLo: '',
+		imgUrlHi: '',
 		date: '',
 		sizeHeight: '',
 		sizeWidth: '',
@@ -24,17 +26,16 @@ const ArtworkCreate = (props) => {
 
 	const handleChange = (e) => {
 		e.persist();
-
 		setArtwork({
 			...artwork,
-			artworkCategory: fullCategory,
+			// fullCategory: fullCategory,
 			[e.target.name]: e.target.value,
 		});
 	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		const url = `${APIURL}/artwork`;
+		const url = `${APIURL}/api/work`;
 
 		fetch(url, {
 			method: 'POST',
@@ -45,7 +46,7 @@ const ArtworkCreate = (props) => {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				setCreatedId(data._id);
+				setCreatedId(data.id);
 			})
 			.catch(() => {
 				setError(true);
@@ -74,11 +75,12 @@ const ArtworkCreate = (props) => {
 	let formSelectTag = (
 		<select
 			required
-			// name='artworkCategory'
 			className='form-input'
 			id='artworkCategoryInput'
+			name='artworkCategory'
 			onChange={(event) => {
 				handleDropdownSelect(event);
+				handleChange(event);
 			}}>
 			<option selected disabled hidden>
 				Select Artwork Category
@@ -99,6 +101,7 @@ const ArtworkCreate = (props) => {
 				return <option value={item}>{props.toTitleCase(item)}</option>;
 			})
 		);
+		artwork.artworkSubcategory = ''
 	};
 
 	const handleSecondaryDropdownSelect = (e) => {
@@ -109,15 +112,19 @@ const ArtworkCreate = (props) => {
 		);
 	};
 
+	if (createdId) {
+		return <Redirect to={`/artwork/${createdId}`} />;
+	}
+
 	return (
-		<div className='artwork-subcat-container'>
-			<Route
-				path='*'
-				render={() => {
-					return <ArtworkCategoryNav />;
-				}}
-			/>
-			<main className='artwork-form-container'>
+			<div className='artwork-subcat-container'>
+				<Route
+					path='*'
+					render={() => {
+						return <ArtworkCategoryNav />;
+					}}
+				/>
+		<main className='artwork-form-container'>
 				<h1 className='artwork-form-heading'>Add Artwork</h1>
 				<p className='artwork-form-subheading'>
 					Please fill out the form below to add a new Joel Spector piece to the
