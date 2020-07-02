@@ -47,7 +47,7 @@ const App = () => {
 				<Route
 					path='/artwork-category/:category'
 					render={() => {
-						return <ArtworkCategorySub />;
+						return <ArtworkCategorySub toTitleCase={toTitleCase} />;
 					}}
 				/>
 				<Route
@@ -56,18 +56,24 @@ const App = () => {
 						return <ArtworkCreate toTitleCase={toTitleCase} />;
 					}}
 				/>
-				{/* <Route
-						path='/artwork/:id'
-						render={(routerProps) => {
-							return <ArtworkDetail {...routerProps} scrollUp={scrollUp} toTitleCase={toTitleCase};
-						}}
-					/> */}
-				{/* <Route
-						path='/artwork/:id/edit'
-						render={(routerProps) => {
-							return <ArtworkUpdate {...routerProps} scrollUp={scrollUp}/>;
-						}}
-					/> */}
+				<Route
+					path='/artwork/:id'
+					render={(routerProps) => {
+						return (
+							<ArtworkDetail
+								{...routerProps}
+								scrollUp={scrollUp}
+								toTitleCase={toTitleCase}
+							/>
+						);
+					}}
+				/>
+				<Route
+					path='/artwork/:id/edit'
+					render={(routerProps) => {
+						return <ArtworkUpdate {...routerProps} scrollUp={scrollUp} />;
+					}}
+				/>
 
 				<Route
 					path='/artwork-all'

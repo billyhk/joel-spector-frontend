@@ -4,6 +4,8 @@ import { Link, Route, Redirect } from 'react-router-dom';
 import { createHashHistory } from 'history';
 import ArtworkCategoryNav from './ArtworkCategoryNav';
 
+import artworkData from './data/jspectDB.json'
+
 const ArtworkDetail = (props) => {
 	const history = createHashHistory();
 
@@ -15,30 +17,30 @@ const ArtworkDetail = (props) => {
 
 	useEffect(() => {
 		props.scrollUp();
-		fetchMyApi();
+		// fetchMyApi();
 		// eslint-disable-next-line
 	}, []);
 
-	async function fetchMyApi() {
-		const url = `${APIURL}/api/work/${artworkId}`;
-		await fetch(url, {
-			method: 'GET',
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				setArtwork(data);
-				setFullCategory(
-					data.artworkSubcategory !== ''
-						? `${props.toTitleCase(data.artworkCategory)}: ${props.toTitleCase(
-								data.artworkSubcategory
-						  )}`
-						: props.toTitleCase(data.artworkCategory)
-				);
-			})
-			.catch(() => {
-				setError(true);
-			});
-	}
+	// async function fetchMyApi() {
+	// 	const url = `${APIURL}/api/work/${artworkId}`;
+	// 	await fetch(url, {
+	// 		method: 'GET',
+	// 	})
+	// 		.then((response) => response.json())
+	// 		.then((data) => {
+	// 			setArtwork(data);
+	// 			setFullCategory(
+	// 				data.artworkSubcategory !== ''
+	// 					? `${props.toTitleCase(data.artworkCategory)}: ${props.toTitleCase(
+	// 							data.artworkSubcategory
+	// 					  )}`
+	// 					: props.toTitleCase(data.artworkCategory)
+	// 			);
+	// 		})
+	// 		.catch(() => {
+	// 			setError(true);
+	// 		});
+	// }
 
 	const onDeleteArtwork = (event) => {
 		let confirm = prompt(
@@ -82,7 +84,7 @@ const ArtworkDetail = (props) => {
 				<div>
 					<Link
 						className='btn btn-info item'
-						to={`/artwork//edit`}
+						to={`/artwork/${artworkId}/edit`}
 						onClick={props.scrollUp}>
 						Update Artwork Information
 					</Link>

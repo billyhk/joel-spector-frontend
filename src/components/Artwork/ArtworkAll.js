@@ -3,6 +3,7 @@ import { Link, Route } from 'react-router-dom';
 import ArtworkCategoryNav from './ArtworkCategoryNav';
 import { MDBDataTableV5 } from 'mdbreact';
 import artworkData from './data/jspectDB.json';
+import { MdFilterNone } from 'react-icons/md';;
 
 const ArtworkAll = (props) => {
 	let fullCategory = artworkData.map((item) => {
@@ -15,16 +16,18 @@ const ArtworkAll = (props) => {
 		}
 	});
 
-	console.log(
-		artworkData.map((item, i) => {
-			return {
-				// id: item.id,
-				title: item.title,
-				date: item.date,
-				fullCategory: fullCategory[i],
-			};
-		})
-	);
+	// console.log(
+	// 	artworkData.map((item, i) => {
+	// 		let idUrl = `/artwork/${item.id}`;
+
+	// 		return {
+	// 			id: [item.id, <Link to={idUrl}></Link>],
+	// 			title: item.title,
+	// 			// date: item.date,
+	// 			fullCategory: fullCategory[i],
+	// 		};
+	// 	})
+	// );
 
 	const data = {
 		columns: [
@@ -48,14 +51,16 @@ const ArtworkAll = (props) => {
 			},
 		],
 		rows: artworkData.map((item, i) => {
+			let idUrl = `/artwork/${item.id}`;
+
 			return {
 				id: item.id,
-				title: item.title,
+			title: [item.title, <Link to={idUrl}><span className='click-for-detail'>{<MdFilterNone/>}</span></Link>],
 				fullCategory: fullCategory[i],
 			};
 		}),
 	};
-
+	// <Link to={idUrl}>{item.id}</Link>
 	return (
 		<div className='artwork-subcat-container'>
 			<Route
@@ -65,9 +70,15 @@ const ArtworkAll = (props) => {
 				}}
 			/>
 			<div className='artwork-all-container'>
-				<h1 className='artwork-form-heading'>All Works</h1>
+				<h1 id='all-artwork-heading-text'>All Works</h1>
 				<div className='artwork-all-table'>
-					<MDBDataTableV5 striped bordered data={data} fullPagination />
+					<MDBDataTableV5
+						striped
+						bordered
+						data={data}
+						fullPagination
+						order={['title', 'asc']}
+					/>
 				</div>
 			</div>
 		</div>

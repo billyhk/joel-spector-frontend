@@ -125,7 +125,7 @@ const ArtworkCreate = (props) => {
 				}}
 			/>
 			<main className='artwork-form-container'>
-				<h1 className='artwork-form-heading'>Add Artwork</h1>
+				<h1 id='artwork-form-heading-text'>Add Artwork</h1>
 				<p className='artwork-form-subheading'>
 					Please fill out the form below to add a new Joel Spector piece to the
 					database.

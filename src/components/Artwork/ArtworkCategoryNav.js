@@ -32,13 +32,13 @@ const ArtworkCategoryNav = () => (
 				<span>Silverpoint</span>
 			</Link>
 			<Link
-				to='/artwork-category/works-on-paper'
+				to='/artwork-category/works_on_paper'
 				className={
-					window.location.href.indexOf('works-on-paper') > -1
+					window.location.href.indexOf('works_on_paper') > -1
 						? 'active1'
 						: 'not-active'
 				}>
-				<span>Works on paper</span>
+				<span>Works on Paper</span>
 			</Link>
 		</div>
 		<div className='subnav-right'>
