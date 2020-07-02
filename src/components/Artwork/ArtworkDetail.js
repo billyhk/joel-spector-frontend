@@ -4,7 +4,7 @@ import { Link, Route, Redirect } from 'react-router-dom';
 import { createHashHistory } from 'history';
 import ArtworkCategoryNav from './ArtworkCategoryNav';
 
-import artworkData from './data/jspectDB.json'
+import artworkData from './data/jspectDB.json';
 
 const ArtworkDetail = (props) => {
 	const history = createHashHistory();
@@ -67,21 +67,36 @@ const ArtworkDetail = (props) => {
 		return history.goBack;
 	}
 
+	// console.log(artworkId, 
+	// 	artworkData.map((item) => {
+	// 		if (item.id === artworkId) {
+	// 			return item;
+	// 		}
+	// 	})
+	// );
+
 	return (
 		<div className='artwork-detail-container'>
-			<Route
+			{/* <Route
 				path='*'
 				render={() => {
 					return <ArtworkCategoryNav />;
 				}}
-			/>
+			/> */}
 
-			<h1 className='artwork-form-heading'>{artwork.title}</h1>
+			{/* <h1 className='artwork-form-heading'>{artworkData.title}</h1> */}
 			<h2>{fullCategory}</h2>
 			{!artwork ? (
 				<div className='loading'>Loading...</div>
 			) : (
 				<div>
+					<button
+						className='btn btn-dark'
+						id='cancel-button'
+						onClick={history.goBack}>
+						Go Back
+					</button>
+
 					<Link
 						className='btn btn-info item'
 						to={`/artwork/${artworkId}/edit`}

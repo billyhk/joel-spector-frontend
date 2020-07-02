@@ -3,7 +3,7 @@ import { Link, Route } from 'react-router-dom';
 import ArtworkCategoryNav from './ArtworkCategoryNav';
 import { MDBDataTableV5 } from 'mdbreact';
 import artworkData from './data/jspectDB.json';
-import { MdFilterNone } from 'react-icons/md';;
+import { MdFilterNone } from 'react-icons/md';
 
 const ArtworkAll = (props) => {
 	let fullCategory = artworkData.map((item) => {
@@ -55,7 +55,12 @@ const ArtworkAll = (props) => {
 
 			return {
 				id: item.id,
-			title: [item.title, <Link to={idUrl}><span className='click-for-detail'>{<MdFilterNone/>}</span></Link>],
+				title: [
+					item.title,
+					<Link to={idUrl}>
+						<span className='click-for-detail'>{<MdFilterNone />}</span>
+					</Link>,
+				],
 				fullCategory: fullCategory[i],
 			};
 		}),
@@ -73,10 +78,16 @@ const ArtworkAll = (props) => {
 				<h1 id='all-artwork-heading-text'>All Works</h1>
 				<div className='artwork-all-table'>
 					<MDBDataTableV5
+						hover
 						striped
 						bordered
+						fixed
+						entriesOptions={[10, 25, 50, 75, 100]}
 						data={data}
 						fullPagination
+						pagingTop
+						searchTop
+						searchBottom={false}
 						order={['title', 'asc']}
 					/>
 				</div>
