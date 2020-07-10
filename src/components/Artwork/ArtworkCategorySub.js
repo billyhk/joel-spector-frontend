@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { Link, Route } from 'react-router-dom';
 import ArtworkCategoryNav from './ArtworkCategoryNav';
 
-import artworkData from './data/jspectDB.json';
+// import artworkData from './data/jspectDB.json';
 
 const ArtworkSubcategory = (props) => {
 	const [category, setCategory] = useState([]);
 	const [isSubcategory, setIsSubcategory] = useState(false);
 
-	let thisCategory = artworkData.filter((work) => {
+	let thisCategory = props.artwork.filter((work) => {
 		return (
 			work.artworkCategory ===
 			window.location.href.split('/')[
@@ -39,7 +39,7 @@ const ArtworkSubcategory = (props) => {
 		? console.log('no subcategory')
 		: Object.keys(subCategories).filter((key) => {
 				return key;
-		  });
+		});
 
 
 	return (

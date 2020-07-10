@@ -10,8 +10,8 @@ import Footer from './components/Footer/Footer';
 //artwork
 import ArtworkCategorySub from './components/Artwork/ArtworkCategorySub';
 import ArtworkCreate from './components/Artwork/ArtworkCreate';
-import ArtworkUpdate from './components/Artwork/ArtworkCreate';
 import ArtworkDetail from './components/Artwork/ArtworkDetail';
+import ArtworkUpdate from './components/Artwork/ArtworkUpdate';
 import ArtworkAll from './components/Artwork/ArtworkAll';
 
 const App = () => {
@@ -72,6 +72,7 @@ const App = () => {
 			<main>
 				<Route exact path='/' component={Home} />
 				<Route
+					exact
 					path='/artwork-category/:category'
 					render={() => {
 						return (
@@ -80,12 +81,14 @@ const App = () => {
 					}}
 				/>
 				<Route
+					exact
 					path='/artwork-create'
 					render={() => {
 						return <ArtworkCreate toTitleCase={toTitleCase} />;
 					}}
 				/>
 				<Route
+					exact
 					path='/artwork/:id'
 					render={(routerProps) => {
 						return (
@@ -99,6 +102,7 @@ const App = () => {
 					}}
 				/>
 				<Route
+					exact
 					path='/artwork/:id/edit'
 					render={(routerProps) => {
 						return (
@@ -106,12 +110,14 @@ const App = () => {
 								{...routerProps}
 								scrollUp={scrollUp}
 								artwork={artwork}
+								toTitleCase={toTitleCase}
 							/>
 						);
 					}}
 				/>
 
 				<Route
+					exact
 					path='/artwork-all'
 					render={() => {
 						return <ArtworkAll toTitleCase={toTitleCase} artwork={artwork} />;

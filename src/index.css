@@ -290,6 +290,51 @@ td a:hover {
 .artwork-subcategory-heading {
 }
 
+/* artwork-detail */
+
+.artwork-detail-container-container {
+	/* margin: 0 auto;
+	display: grid; */
+}
+
+.artwork-detail-container {
+	display: grid;
+	align-items: center;
+	justify-content: center;
+}
+
+.artwork-detail-container img {
+	width: 100%;
+}
+
+.artwork-detail-buttons-container {
+	margin: 2rem 0;
+	display: grid;
+	align-items: center;
+	justify-content: center;
+}
+.artwork-detail-buttons-container > button,
+.artwork-detail-buttons-container > a {
+	border-radius: 4ch;
+}
+
+.artwork-detail-headings-container {
+	text-align: center;
+	font-family: 'ubuntu';
+	margin: 2rem 0;
+}
+
+.artwork-detail-title {
+	border-bottom: 2px solid black;
+	margin-bottom: 2rem;
+}
+
+.artwork-detail-description {
+	color: grey;
+}
+
+/* media queries */
+
 @media only screen and (min-width: 1550px) {
 	.home-artist-statement {
 		max-width: 56vw;
@@ -324,6 +369,12 @@ td a:hover {
 	.size-inputs-labels {
 		display: grid;
 	}
+	/* .artwork-detail-buttons-container {
+		display: grid;
+	}
+	.artwork-detail-buttons-container > button, .artwork-detail-buttons-container > a {
+		border-radius: 4ch;
+	} */
 }
 
 @media only screen and (max-width: 600px) {

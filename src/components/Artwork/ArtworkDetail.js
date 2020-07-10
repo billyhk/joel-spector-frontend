@@ -4,7 +4,7 @@ import { Link, Route, Redirect } from 'react-router-dom';
 import { createHashHistory } from 'history';
 import ArtworkCategoryNav from './ArtworkCategoryNav';
 
-import artworkData from './data/jspectDB.json';
+// import artworkData from './data/jspectDB.json';
 
 const ArtworkDetail = (props) => {
 	const history = createHashHistory();
@@ -17,30 +17,31 @@ const ArtworkDetail = (props) => {
 
 	useEffect(() => {
 		props.scrollUp();
-		// fetchMyApi();
+		fetchMyApi();
 		// eslint-disable-next-line
 	}, []);
 
-	// async function fetchMyApi() {
-	// 	const url = `${APIURL}/api/work/${artworkId}`;
-	// 	await fetch(url, {
-	// 		method: 'GET',
-	// 	})
-	// 		.then((response) => response.json())
-	// 		.then((data) => {
-	// 			setArtwork(data);
-	// 			setFullCategory(
-	// 				data.artworkSubcategory !== ''
-	// 					? `${props.toTitleCase(data.artworkCategory)}: ${props.toTitleCase(
-	// 							data.artworkSubcategory
-	// 					  )}`
-	// 					: props.toTitleCase(data.artworkCategory)
-	// 			);
-	// 		})
-	// 		.catch(() => {
-	// 			setError(true);
-	// 		});
-	// }
+	async function fetchMyApi() {
+		const url = `${APIURL}/api/work/${artworkId}`;
+		await fetch(url, {
+			method: 'GET',
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				setArtwork(data);
+				setFullCategory(
+					data.artworkSubcategory !== ''
+						? `${props.toTitleCase(data.artworkCategory)}: ${props.toTitleCase(
+								data.artworkSubcategory
+						  )}`
+						: props.toTitleCase(data.artworkCategory)
+				);
+			})
+			.catch(() => {
+				setError(true);
+			});
+	}
+	console.log(artwork);
 
 	const onDeleteArtwork = (event) => {
 		let confirm = prompt(
@@ -67,7 +68,7 @@ const ArtworkDetail = (props) => {
 		return history.goBack;
 	}
 
-	// console.log(artworkId, 
+	// console.log(artworkId,
 	// 	artworkData.map((item) => {
 	// 		if (item.id === artworkId) {
 	// 			return item;
@@ -76,37 +77,45 @@ const ArtworkDetail = (props) => {
 	// );
 
 	return (
-		<div className='artwork-detail-container'>
-			{/* <Route
+		<div className='artwork-detail-container-container'>
+			<Route
 				path='*'
 				render={() => {
 					return <ArtworkCategoryNav />;
 				}}
-			/> */}
+			/>
 
-			{/* <h1 className='artwork-form-heading'>{artworkData.title}</h1> */}
-			<h2>{fullCategory}</h2>
 			{!artwork ? (
 				<div className='loading'>Loading...</div>
 			) : (
-				<div>
-					<button
-						className='btn btn-dark'
-						id='cancel-button'
-						onClick={history.goBack}>
-						Go Back
-					</button>
+				<div className='artwork-detail-container'>
+					<img alt={artwork.title} src={artwork.imgUrlHi} />
+					<div className='artwork-detail-headings-container'>
+						<h1 className='artwork-detail-title'>{artwork.title}</h1>
+						<h2 className='artwork-detail-fullCategory'>{fullCategory}</h2>
+						<h3 className='artwork-detail-size'>{`${artwork.sizeWidth}"w x ${artwork.sizeHeight}"h`}</h3>
+						<h4 className='artwork-detail-description'>{artwork.description}</h4> 
+					</div>
 
-					<Link
-						className='btn btn-info item'
-						to={`/artwork/${artworkId}/edit`}
-						onClick={props.scrollUp}>
-						Update Artwork Information
-					</Link>
+					<div className='artwork-detail-buttons-container'>
+						<button
+							className='btn btn-dark'
+							id='cancel-button'
+							onClick={history.goBack}>
+							Go Back
+						</button>
 
-					<button onClick={onDeleteArtwork} className='btn btn-danger item'>
-						Delete Transaction
-					</button>
+						<Link
+							className='btn btn-info item'
+							to={`/artwork/${artworkId}/edit`}
+							onClick={props.scrollUp}>
+							Update Artwork Information
+						</Link>
+
+						<button onClick={onDeleteArtwork} className='btn btn-danger item'>
+							Delete Transaction
+						</button>
+					</div>
 				</div>
 			)}
 		</div>

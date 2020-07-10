@@ -5,8 +5,9 @@ const ArtworkForm = (props) => {
 	const history = createHashHistory();
 
 	useEffect(() => {
-		props.setSecondDropdown(false);
-		// eslint-disable-next-line
+		if (props.setSecondDropdown) {
+			props.setSecondDropdown(false);
+		} // eslint-disable-next-line
 	}, []);
 
 	return (
@@ -34,7 +35,11 @@ const ArtworkForm = (props) => {
 				</>
 			) : null}
 			<label>Title</label>
-			<input required onChange={props.handleChange} name='title'></input>
+			<input
+				value={props.artwork.title}
+				required
+				onChange={props.handleChange}
+				name='title'></input>
 			<label>Image URL</label>
 			<div className='size-inputs'>
 				<div className='size-inputs-labels'>
@@ -42,12 +47,20 @@ const ArtworkForm = (props) => {
 					<label>Low (optional):</label>
 				</div>
 				<div className='size-inputs-inputs'>
-					<input required onChange={props.handleChange} name='imgUrlHi'></input>{' '}
-					<input onChange={props.handleChange} name='imgUrlLo'></input>{' '}
+					<input
+						value={props.artwork.imgUrlHi}
+						required
+						onChange={props.handleChange}
+						name='imgUrlHi'></input>{' '}
+					<input
+						value={props.artwork.imgUrlLo}
+						onChange={props.handleChange}
+						name='imgUrlLo'></input>{' '}
 				</div>
 			</div>
 			<label>Date</label>
 			<input
+				value={props.artwork.date}
 				required
 				onChange={props.handleChange}
 				type='date'
@@ -60,11 +73,13 @@ const ArtworkForm = (props) => {
 				</div>
 				<div className='size-inputs-inputs'>
 					<input
+						value={props.artwork.sizeHeight}
 						onChange={props.handleChange}
 						type='number'
 						min='0'
 						name='sizeHeight'></input>{' '}
 					<input
+						value={props.artwork.sizeWidth}
 						onChange={props.handleChange}
 						type='number'
 						min='0'
@@ -72,7 +87,10 @@ const ArtworkForm = (props) => {
 				</div>
 			</div>
 			<label>Description (optional)</label>
-			<input onChange={props.handleChange} name='description'></input>
+			<input
+				value={props.artwork.description}
+				onChange={props.handleChange}
+				name='description'></input>
 			<button className='btn btn-blue' type='submit'>
 				Submit
 			</button>

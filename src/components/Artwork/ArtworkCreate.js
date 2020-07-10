@@ -28,7 +28,6 @@ const ArtworkCreate = (props) => {
 		e.persist();
 		setArtwork({
 			...artwork,
-			// fullCategory: fullCategory,
 			[e.target.name]: e.target.value,
 		});
 	};

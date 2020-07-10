@@ -56,7 +56,7 @@ class NavbarPage extends Component {
 									</MDBDropdownItem>
 
 									<MDBDropdownItem className='nav-dropdown-item'>
-										<Link to='/artwork-category/woks-on-paper'>
+										<Link to='/artwork-category/works_on_paper'>
 											Works on Paper
 										</Link>
 									</MDBDropdownItem>
