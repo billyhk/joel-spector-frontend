@@ -12,7 +12,6 @@ const ArtworkUpdate = (props) => {
 	const [artwork, setArtwork] = useState({});
 	const [createdId, setCreatedId] = useState(null);
 
-	const [deleted, setDeleted] = useState(false);
 	const [error, setError] = useState(false);
 
 	const artworkId = props.match.params.id;
