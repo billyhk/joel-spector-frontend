@@ -87,7 +87,7 @@ const ArtworkUpdate = (props) => {
 			<main className='artwork-form-container'>
             <h1 id='artwork-form-heading-text'>Update Artwork id: {artwork.id}</h1>
 				<p className='artwork-form-subheading'>
-					Please fill out the form below to updated information on this piece.
+					Please fill out the form below to update information on this piece.
 				</p>
 				{error && <p>Something went wrong... Please try again!</p>}
 				<form className='artwork-form-form' onSubmit={handleSubmit}>
