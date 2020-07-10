@@ -2,11 +2,12 @@ import React from 'react';
 import { Link, Route } from 'react-router-dom';
 import ArtworkCategoryNav from './ArtworkCategoryNav';
 import { MDBDataTableV5 } from 'mdbreact';
-import artworkData from './data/jspectDB.json';
+// import artworkData from './data/jspectDB.json';
 import { MdFilterNone } from 'react-icons/md';
 
 const ArtworkAll = (props) => {
-	let fullCategory = artworkData.map((item) => {
+	console.log(props.artwork)
+	let fullCategory = props.artwork.map((item) => {
 		if (item.artworkSubcategory === '' || item.artworkSubcategory === null) {
 			return props.toTitleCase(item.artworkCategory);
 		} else {
@@ -35,13 +36,13 @@ const ArtworkAll = (props) => {
 				label: 'id',
 				field: 'id',
 				sort: 'asc',
-				width: 150,
+				width: 50,
 			},
 			{
 				label: 'Title',
 				field: 'title',
 				sort: 'asc',
-				width: 400,
+				width: 800,
 			},
 			{
 				label: 'Full Category',
@@ -50,7 +51,7 @@ const ArtworkAll = (props) => {
 				width: 400,
 			},
 		],
-		rows: artworkData.map((item, i) => {
+		rows: props.artwork.map((item, i) => {
 			let idUrl = `/artwork/${item.id}`;
 
 			return {

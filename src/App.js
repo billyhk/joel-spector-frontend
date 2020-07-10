@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
+import { APIURL } from './config';
 
 //misc. components
 import NavBar from './components/NavBar/Navbar';
@@ -14,10 +15,12 @@ import ArtworkDetail from './components/Artwork/ArtworkDetail';
 import ArtworkAll from './components/Artwork/ArtworkAll';
 
 const App = () => {
+	const [artwork, setArtwork] = useState([]);
+	const [error, setError] = useState(false);
+
 	function scrollUp() {
 		window.scrollTo(0, 0);
 	}
-
 	// convert data to Title Case
 	function toTitleCase(str) {
 		return str
@@ -34,6 +37,30 @@ const App = () => {
 			});
 	}
 
+	useEffect(() => {
+		scrollUp();
+		fetchMyApi();
+		// eslint-disable-next-line
+	}, []);
+
+	async function fetchMyApi() {
+		await fetch(`${APIURL}/api/work/`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json',
+				// Authorization: `Bearer ${localStorage.getItem('token')}`,
+			},
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				setArtwork(data);
+			})
+			.catch(() => {
+				setError(true);
+			});
+	}
+
 	return (
 		<>
 			<Route
@@ -47,7 +74,9 @@ const App = () => {
 				<Route
 					path='/artwork-category/:category'
 					render={() => {
-						return <ArtworkCategorySub toTitleCase={toTitleCase} />;
+						return (
+							<ArtworkCategorySub toTitleCase={toTitleCase} artwork={artwork} />
+						);
 					}}
 				/>
 				<Route
@@ -64,6 +93,7 @@ const App = () => {
 								{...routerProps}
 								scrollUp={scrollUp}
 								toTitleCase={toTitleCase}
+								artwork={artwork}
 							/>
 						);
 					}}
@@ -71,14 +101,20 @@ const App = () => {
 				<Route
 					path='/artwork/:id/edit'
 					render={(routerProps) => {
-						return <ArtworkUpdate {...routerProps} scrollUp={scrollUp} />;
+						return (
+							<ArtworkUpdate
+								{...routerProps}
+								scrollUp={scrollUp}
+								artwork={artwork}
+							/>
+						);
 					}}
 				/>
 
 				<Route
 					path='/artwork-all'
 					render={() => {
-						return <ArtworkAll toTitleCase={toTitleCase} />;
+						return <ArtworkAll toTitleCase={toTitleCase} artwork={artwork} />;
 					}}
 				/>
 			</main>
