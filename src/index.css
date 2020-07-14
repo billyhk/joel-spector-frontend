@@ -350,6 +350,10 @@ td a:hover {
 	margin: 1rem;
 }
 
+/* .btn-info {
+	color: black;
+} */
+
 /* media queries */
 
 @media only screen and (min-width: 1550px) {

@@ -116,7 +116,7 @@ const ArtworkDetail = (props) => {
 						</Link>
 
 						<button onClick={onDeleteArtwork} className='btn btn-danger item'>
-							Delete Transaction
+							Delete This Work
 						</button>
 					</div>
 				</div>
