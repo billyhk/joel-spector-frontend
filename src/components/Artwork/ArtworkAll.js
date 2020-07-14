@@ -6,7 +6,6 @@ import { MDBDataTableV5 } from 'mdbreact';
 import { MdFilterNone } from 'react-icons/md';
 
 const ArtworkAll = (props) => {
-	console.log(props.artwork)
 	let fullCategory = props.artwork.map((item) => {
 		if (item.artworkSubcategory === '' || item.artworkSubcategory === null) {
 			return props.toTitleCase(item.artworkCategory);
@@ -45,7 +44,7 @@ const ArtworkAll = (props) => {
 				width: 800,
 			},
 			{
-				label: 'Full Category',
+				label: 'Category',
 				field: 'fullCategory',
 				sort: 'asc',
 				width: 400,

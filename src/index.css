@@ -168,6 +168,10 @@ body {
 	padding: 2rem 15vw;
 }
 
+.artwork-update-fullCategory {
+	font-weight: 600;
+}
+
 #all-artwork-heading-text {
 	/* border-left: 2px solid black; */
 	border-bottom: 2px solid black;
@@ -227,6 +231,14 @@ body {
 .size-inputs-labels {
 	display: grid;
 }
+
+.button-wrapper button {
+	background-color: rgb(25, 118, 210);
+	color: white;
+	padding: 15px 10px;
+	border: 0;
+}
+
 
 /* Artwork All */
 
@@ -331,6 +343,11 @@ td a:hover {
 
 .artwork-detail-description {
 	color: grey;
+}
+
+.artwork-detail-fullCategory {
+	letter-spacing: .5vmin;
+	margin: 1rem;
 }
 
 /* media queries */

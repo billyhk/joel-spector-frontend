@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { createHashHistory } from 'history';
+import DropArea from '../DropArea/DropArea';
 
 const ArtworkForm = (props) => {
 	const history = createHashHistory();
@@ -47,8 +48,10 @@ const ArtworkForm = (props) => {
 					<label>Low (optional):</label>
 				</div>
 				<div className='size-inputs-inputs'>
+					{/* <DropArea /> */}
 					<input
 						value={props.artwork.imgUrlHi}
+						// placeholder='Or Enter URL'
 						required
 						onChange={props.handleChange}
 						name='imgUrlHi'></input>{' '}

@@ -32,11 +32,11 @@ const ArtworkUpdate = (props) => {
 			.then((data) => {
 				setArtwork(data);
 				setFullCategory(
-					data.artworkSubcategory !== ''
-						? `${props.toTitleCase(data.artworkCategory)}: ${props.toTitleCase(
+					data.artworkSubcategory === '' || data.artworkSubcategory === null
+						? props.toTitleCase(data.artworkCategory)
+						: `${props.toTitleCase(data.artworkCategory)}: ${props.toTitleCase(
 								data.artworkSubcategory
 						  )}`
-						: props.toTitleCase(data.artworkCategory)
 				);
 			})
 			.catch(() => {
@@ -44,7 +44,7 @@ const ArtworkUpdate = (props) => {
 			});
 	}
 
-	let formSelectTag = <h3>{fullCategory}</h3>;
+	let formSelectTag = <h3 className='artwork-update-fullCategory'>{fullCategory}</h3>;
 
 	const handleChange = (e) => {
 		e.persist();
@@ -76,6 +76,8 @@ const ArtworkUpdate = (props) => {
 			});
 	};
 
+console.log(fullCategory)
+
 	return (
 		<div className='artwork-subcat-container'>
 			<Route
@@ -96,6 +98,7 @@ const ArtworkUpdate = (props) => {
 						handleChange={handleChange}
 						handleSubmit={handleSubmit}
 						toTitleCase={props.toTitleCase}
+						formSelectTag={formSelectTag}
 					/>
 				</form>
 			</main>

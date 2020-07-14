@@ -44,7 +44,7 @@ const App = () => {
 	}, []);
 
 	async function fetchMyApi() {
-		await fetch(`${APIURL}/api/work/`, {
+		await fetch(`${APIURL}/api/work`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
@@ -76,7 +76,9 @@ const App = () => {
 					path='/artwork-category/:category'
 					render={() => {
 						return (
-							<ArtworkCategorySub toTitleCase={toTitleCase} artwork={artwork} />
+							<ArtworkCategorySub toTitleCase={toTitleCase} 
+							artwork={artwork} 
+							/>
 						);
 					}}
 				/>

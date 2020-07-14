@@ -30,11 +30,11 @@ const ArtworkDetail = (props) => {
 			.then((data) => {
 				setArtwork(data);
 				setFullCategory(
-					data.artworkSubcategory !== ''
-						? `${props.toTitleCase(data.artworkCategory)}: ${props.toTitleCase(
+					data.artworkSubcategory === '' || data.artworkSubcategory === null
+						? props.toTitleCase(data.artworkCategory) : `${props.toTitleCase(data.artworkCategory)}: ${props.toTitleCase(
 								data.artworkSubcategory
 						  )}`
-						: props.toTitleCase(data.artworkCategory)
+						
 				);
 			})
 			.catch(() => {
@@ -76,6 +76,7 @@ const ArtworkDetail = (props) => {
 	// 	})
 	// );
 
+
 	return (
 		<div className='artwork-detail-container-container'>
 			<Route
@@ -92,9 +93,11 @@ const ArtworkDetail = (props) => {
 					<img alt={artwork.title} src={artwork.imgUrlHi} />
 					<div className='artwork-detail-headings-container'>
 						<h1 className='artwork-detail-title'>{artwork.title}</h1>
-						<h2 className='artwork-detail-fullCategory'>{fullCategory}</h2>
+						<h2 className='artwork-detail-fullCategory'>{`\u00b7${fullCategory}\u00b7`}</h2>
 						<h3 className='artwork-detail-size'>{`${artwork.sizeWidth}"w x ${artwork.sizeHeight}"h`}</h3>
-						<h4 className='artwork-detail-description'>{artwork.description}</h4> 
+						<h4 className='artwork-detail-description'>
+							{artwork.description}
+						</h4>
 					</div>
 
 					<div className='artwork-detail-buttons-container'>
