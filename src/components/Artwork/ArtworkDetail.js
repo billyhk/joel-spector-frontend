@@ -31,10 +31,10 @@ const ArtworkDetail = (props) => {
 				setArtwork(data);
 				setFullCategory(
 					data.artworkSubcategory === '' || data.artworkSubcategory === null
-						? props.toTitleCase(data.artworkCategory) : `${props.toTitleCase(data.artworkCategory)}: ${props.toTitleCase(
+						? props.toTitleCase(data.artworkCategory)
+						: `${props.toTitleCase(data.artworkCategory)}: ${props.toTitleCase(
 								data.artworkSubcategory
 						  )}`
-						
 				);
 			})
 			.catch(() => {
@@ -65,7 +65,7 @@ const ArtworkDetail = (props) => {
 	};
 
 	if (deleted) {
-		return history.goBack;
+		return <Redirect to={`/artwork-all`} />;
 	}
 
 	// console.log(artworkId,
@@ -75,7 +75,6 @@ const ArtworkDetail = (props) => {
 	// 		}
 	// 	})
 	// );
-
 
 	return (
 		<div className='artwork-detail-container-container'>

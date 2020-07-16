@@ -8,31 +8,37 @@ import ArtworkCategoryNav from './ArtworkCategoryNav';
 const ArtworkSubcategory = (props) => {
 	const [category, setCategory] = useState([]);
 	const [isSubcategory, setIsSubcategory] = useState(false);
-	// const [artwork, setArtwork] = useState([]);
+	const [artwork, setArtwork] = useState([]);
 	const [error, setError] = useState(false);
 
-	// useEffect(() => {
-	// 	fetch(`${APIURL}/api/work`, {
-	// 			method: 'GET',
-	// 			headers: {
-	// 				'Content-Type': 'application/json',
-	// 				Accept: 'application/json',
-	// 				// Authorization: `Bearer ${localStorage.getItem('token')}`,
-	// 			},
-	// 		})
-	// 			.then((response) => response.json())
-	// 			.then((data) => {
-	// 				setArtwork(data);
-	// 			})
-	// 			.catch(() => {
-	// 				setError(true);
-	// 			});
+	useEffect(() => {
+		props.scrollUp();
+		fetchMyApi();
+		// eslint-disable-next-line
+	}, []);
 
-	// 	// eslint-disable-next-line
-	// }, []);
+	async function fetchMyApi() {
+		await fetch(`${APIURL}/api/work`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json',
+				// Authorization: `Bearer ${localStorage.getItem('token')}`,
+			},
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				setArtwork(data);
+			})
+			.catch(() => {
+				setError(true);
+			});
+	}
+
+
 
 	// set the current category of art based on the url path
-	let thisCategory = props.artwork.filter((work) => {
+	let thisCategory = artwork.filter((work) => {
 		return (
 			work.artworkCategory ===
 			window.location.href.split('/')[
@@ -53,9 +59,9 @@ const ArtworkSubcategory = (props) => {
 	// if there's no subcategory, just return the full gallery for this category, otherwise return the items divided by their subCategory
 
 /* UNCATEGORIZED GALLERY */	
-	let thisCategoryGallery = thisCategory.map((item) => {
+	let thisCategoryGallery = thisCategory.map((item, i) => {
 		return (
-			<Link to={`/artwork/${item.id}`}>
+			<Link to={`/artwork/${item.id}`} key={i}>
 				<img
 					alt={item.title}
 					src={item.imgUrlLo ? item.imgUrlLo : item.imgUrlHi}

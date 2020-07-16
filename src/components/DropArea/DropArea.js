@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 
-const width = '100%';
-const minHeight = '20vmin';
+const width = 'auto';
+const height = 'auto';
 const borderStyle = '2px dotted #000';
 
 const dropAreaImageStyle = {
 	width,
-    minHeight
+    height
 };
 
 const dropAreaStyle = {
 	...dropAreaImageStyle,
 	border: borderStyle,
+
 };
 
 const DropArea = () => {
@@ -56,11 +57,13 @@ const DropArea = () => {
 		<div>
 			{err && <p>{err}</p>}
 			<div
-            className='drop-field'
+				className='drop-field'
 				style={dropAreaStyle}
 				onDrop={(e) => onDrop(e)}
-				onDragOver={(e) => onDragOver(e)}>
-				{data && <img alt={data} style={dropAreaImageStyle} src={data} />}
+				onDragOver={(e) => onDragOver(e)}
+				>{!data && `Drag & Drop Files`}
+				{data && <img alt={data} style={dropAreaImageStyle} src={data} />} 
+				
 			</div>
 			<div className='button-wrapper'>
 				{data && <button onClick={() => setData(false)}>Remove</button>}

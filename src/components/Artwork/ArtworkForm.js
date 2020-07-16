@@ -42,25 +42,11 @@ const ArtworkForm = (props) => {
 				onChange={props.handleChange}
 				name='title'></input>
 			<label>Image URL</label>
-			<div className='size-inputs'>
-				<div className='size-inputs-labels'>
-					<label>High Resolution:</label>
-					<label>Low (optional):</label>
-				</div>
-				<div className='size-inputs-inputs'>
-					{/* <DropArea /> */}
-					<input
-						value={props.artwork.imgUrlHi}
-						// placeholder='Or Enter URL'
-						required
-						onChange={props.handleChange}
-						name='imgUrlHi'></input>{' '}
-					<input
-						value={props.artwork.imgUrlLo}
-						onChange={props.handleChange}
-						name='imgUrlLo'></input>{' '}
-				</div>
-			</div>
+			<input
+				value={props.artwork.imgUrlHi}
+				required
+				onChange={props.handleChange}
+				name='imgUrlHi'></input>{' '}
 			<label>Date</label>
 			<input
 				value={props.artwork.date}

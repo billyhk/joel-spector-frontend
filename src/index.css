@@ -239,6 +239,15 @@ body {
 	border: 0;
 }
 
+.drop-field {
+	padding: 1rem;
+	color: rgb(105, 105, 199);
+}
+
+.drop-field img {
+	max-width: 50vw;
+	max-height: 50vh;
+}
 
 /* Artwork All */
 

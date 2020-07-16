@@ -10,7 +10,6 @@ const ArtworkCreate = (props) => {
 		artworkCategory: '',
 		artworkSubcategory: '',
 		title: '',
-		imgUrlLo: '',
 		imgUrlHi: '',
 		date: '',
 		sizeHeight: '',
@@ -33,6 +32,7 @@ const ArtworkCreate = (props) => {
 	};
 
 	const handleSubmit = (e) => {
+		console.log('called')
 		e.preventDefault();
 		const url = `${APIURL}/api/work`;
 

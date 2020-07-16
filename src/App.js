@@ -15,7 +15,7 @@ import ArtworkUpdate from './components/Artwork/ArtworkUpdate';
 import ArtworkAll from './components/Artwork/ArtworkAll';
 
 const App = () => {
-	const [artwork, setArtwork] = useState([]);
+	// const [artwork, setArtwork] = useState([]);
 	const [error, setError] = useState(false);
 
 	function scrollUp() {
@@ -37,30 +37,6 @@ const App = () => {
 			});
 	}
 
-	useEffect(() => {
-		scrollUp();
-		fetchMyApi();
-		// eslint-disable-next-line
-	}, []);
-
-	async function fetchMyApi() {
-		await fetch(`${APIURL}/api/work`, {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json',
-				Accept: 'application/json',
-				// Authorization: `Bearer ${localStorage.getItem('token')}`,
-			},
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				setArtwork(data);
-			})
-			.catch(() => {
-				setError(true);
-			});
-	}
-
 	return (
 		<>
 			<Route
@@ -76,8 +52,7 @@ const App = () => {
 					path='/artwork-category/:category'
 					render={() => {
 						return (
-							<ArtworkCategorySub toTitleCase={toTitleCase} 
-							artwork={artwork} 
+							<ArtworkCategorySub toTitleCase={toTitleCase} scrollUp={scrollUp}
 							/>
 						);
 					}}
@@ -98,7 +73,6 @@ const App = () => {
 								{...routerProps}
 								scrollUp={scrollUp}
 								toTitleCase={toTitleCase}
-								artwork={artwork}
 							/>
 						);
 					}}
@@ -111,7 +85,6 @@ const App = () => {
 							<ArtworkUpdate
 								{...routerProps}
 								scrollUp={scrollUp}
-								artwork={artwork}
 								toTitleCase={toTitleCase}
 							/>
 						);
@@ -122,7 +95,7 @@ const App = () => {
 					exact
 					path='/artwork-all'
 					render={() => {
-						return <ArtworkAll toTitleCase={toTitleCase} artwork={artwork} />;
+						return <ArtworkAll toTitleCase={toTitleCase} scrollUp={scrollUp}/>;
 					}}
 				/>
 			</main>

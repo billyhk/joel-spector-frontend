@@ -76,8 +76,6 @@ const ArtworkUpdate = (props) => {
 			});
 	};
 
-console.log(fullCategory)
-
 	return (
 		<div className='artwork-subcat-container'>
 			<Route

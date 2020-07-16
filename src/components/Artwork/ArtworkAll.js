@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { APIURL } from '../../config';
+
 import { Link, Route } from 'react-router-dom';
 import ArtworkCategoryNav from './ArtworkCategoryNav';
 import { MDBDataTableV5 } from 'mdbreact';
@@ -6,7 +8,10 @@ import { MDBDataTableV5 } from 'mdbreact';
 import { MdFilterNone } from 'react-icons/md';
 
 const ArtworkAll = (props) => {
-	let fullCategory = props.artwork.map((item) => {
+	const [artwork, setArtwork] = useState([]);
+	const [error, setError] = useState(false);
+
+	let fullCategory = artwork.map((item) => {
 		if (item.artworkSubcategory === '' || item.artworkSubcategory === null) {
 			return props.toTitleCase(item.artworkCategory);
 		} else {
@@ -16,18 +21,29 @@ const ArtworkAll = (props) => {
 		}
 	});
 
-	// console.log(
-	// 	artworkData.map((item, i) => {
-	// 		let idUrl = `/artwork/${item.id}`;
+	useEffect(() => {
+		props.scrollUp();
+		fetchMyApi();
+		// eslint-disable-next-line
+	}, []);
 
-	// 		return {
-	// 			id: [item.id, <Link to={idUrl}></Link>],
-	// 			title: item.title,
-	// 			// date: item.date,
-	// 			fullCategory: fullCategory[i],
-	// 		};
-	// 	})
-	// );
+	async function fetchMyApi() {
+		await fetch(`${APIURL}/api/work`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json',
+				// Authorization: `Bearer ${localStorage.getItem('token')}`,
+			},
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				setArtwork(data);
+			})
+			.catch(() => {
+				setError(true);
+			});
+	}
 
 	const data = {
 		columns: [
@@ -50,14 +66,14 @@ const ArtworkAll = (props) => {
 				width: 400,
 			},
 		],
-		rows: props.artwork.map((item, i) => {
+		rows: artwork.map((item, i) => {
 			let idUrl = `/artwork/${item.id}`;
 
 			return {
 				id: item.id,
 				title: [
 					item.title,
-					<Link to={idUrl}>
+					<Link to={idUrl} key={i}>
 						<span className='click-for-detail'>{<MdFilterNone />}</span>
 					</Link>,
 				],
@@ -65,7 +81,6 @@ const ArtworkAll = (props) => {
 			};
 		}),
 	};
-	// <Link to={idUrl}>{item.id}</Link>
 	return (
 		<div className='artwork-subcat-container'>
 			<Route
