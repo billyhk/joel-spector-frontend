@@ -178,6 +178,7 @@ body {
 
 	/* margin: 2vmin 10rem; */
 	text-align: center;
+	font-family: 'ubuntu';
 }
 
 #artwork-form-heading-text {
@@ -187,6 +188,7 @@ body {
 
 	background: rgba(162, 204, 252, 0.342);
 	text-align: center;
+	font-family: 'ubuntu'
 }
 
 .artwork-form-subheading {
@@ -289,11 +291,11 @@ td a:hover {
 	border-bottom: 2px solid black;
 
 	padding: 2vmin 0;
-	margin: 2vmin 10rem;
+	margin: 2vmin 2rem;
 	text-align: center;
-	letter-spacing: 0.25vmin;
+	letter-spacing: 0.15vmin;
 	font-family: 'ubuntu';
-	font-size: 3.5rem;
+	font-size: 3rem;
 }
 
 .artwork-gallery-section {
@@ -310,10 +312,12 @@ td a:hover {
 	text-align: center;
 	font-size: 1.5rem;
 	font-family: 'ubuntu';
+	letter-spacing: .15vmin;
 }
 
 .artwork-subcategory-heading {
 	font-size: 2.5rem;
+	letter-spacing: .5vmin;
 	font-family: 'ubuntu';
 	color: rgba(0, 100, 150, 0.7);
 	margin: 4rem 5vmin 2rem 5vmin;

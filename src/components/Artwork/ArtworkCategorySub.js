@@ -81,11 +81,6 @@ const ArtworkSubcategory = (props) => {
 
 	let artworkCategoryGallery = Object.entries(subCategories).map(
 		([key, value]) => {
-			console.log(
-				value.map((item, i) => {
-					return item.id;
-				})
-			);
 			if (key !== 'null') {
 				return (
 					<>
