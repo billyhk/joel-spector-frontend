@@ -25,6 +25,9 @@ const ArtworkCreate = (props) => {
 
 	const handleChange = (e) => {
 		e.persist();
+		if (e.target.value === '') {
+			e.target.value = null;
+		}
 		setArtwork({
 			...artwork,
 			[e.target.name]: e.target.value,
@@ -32,7 +35,7 @@ const ArtworkCreate = (props) => {
 	};
 
 	const handleSubmit = (e) => {
-		console.log('called')
+		console.log('called');
 		e.preventDefault();
 		const url = `${APIURL}/api/work`;
 

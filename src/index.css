@@ -291,6 +291,9 @@ td a:hover {
 	padding: 2vmin 0;
 	margin: 2vmin 10rem;
 	text-align: center;
+	letter-spacing: 0.25vmin;
+	font-family: 'ubuntu';
+	font-size: 3.5rem;
 }
 
 .artwork-gallery-section {
@@ -306,9 +309,15 @@ td a:hover {
 .artwork-gallery-section p {
 	text-align: center;
 	font-size: 1.5rem;
+	font-family: 'ubuntu';
 }
 
 .artwork-subcategory-heading {
+	font-size: 2.5rem;
+	font-family: 'ubuntu';
+	color: rgba(0, 100, 150, 0.7);
+	margin: 4rem 5vmin 2rem 5vmin;
+	text-align: center;
 }
 
 /* artwork-detail */
@@ -355,7 +364,7 @@ td a:hover {
 }
 
 .artwork-detail-fullCategory {
-	letter-spacing: .5vmin;
+	letter-spacing: 0.5vmin;
 	margin: 1rem;
 }
 

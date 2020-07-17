@@ -6,8 +6,6 @@ import ArtworkCategoryNav from './ArtworkCategoryNav';
 // import artworkData from './data/jspectDB.json';
 
 const ArtworkSubcategory = (props) => {
-	const [category, setCategory] = useState([]);
-	const [isSubcategory, setIsSubcategory] = useState(false);
 	const [artwork, setArtwork] = useState([]);
 	const [error, setError] = useState(false);
 
@@ -35,8 +33,6 @@ const ArtworkSubcategory = (props) => {
 			});
 	}
 
-
-
 	// set the current category of art based on the url path
 	let thisCategory = artwork.filter((work) => {
 		return (
@@ -46,6 +42,15 @@ const ArtworkSubcategory = (props) => {
 			]
 		);
 	});
+
+	// if (
+	// 	thisCategory[0].artworkSubcategory !== '' ||
+	// 	thisCategory[0].artworkSubcategory !== null
+	// ) {
+	// 	setIsSubcategory(false);
+	// } else {
+	// 	setIsSubcategory(true);
+	// }
 
 	//reduce the full array of artworkCategory to multiple subcategory arrays
 	let subCategories = thisCategory.reduce((r, a) => {
@@ -58,103 +63,68 @@ const ArtworkSubcategory = (props) => {
 
 	// if there's no subcategory, just return the full gallery for this category, otherwise return the items divided by their subCategory
 
-/* UNCATEGORIZED GALLERY */	
-	let thisCategoryGallery = thisCategory.map((item, i) => {
-		return (
-			<Link to={`/artwork/${item.id}`} key={i}>
-				<img
-					alt={item.title}
-					src={item.imgUrlLo ? item.imgUrlLo : item.imgUrlHi}
-				/>
-				<p>{item.title}</p>
-			</Link>
-		);
-	});
+	/* UNCATEGORIZED GALLERY */
 
-	/*
-	// CATEGORIZED GALLERY
-		let thisCategoryGallery;
+	// let artworkCategoryGallery = thisCategory.map((item, i) => {
+	// 	return (
+	// <Link to={`/artwork/${item.id}`} key={i}>
+	// 	<img
+	// 		alt={item.title}
+	// 		src={item.imgUrlLo ? item.imgUrlLo : item.imgUrlHi}
+	// 	/>
+	// 	<p>{item.title}</p>
+	// </Link>
+	// 	);
+	// });
 
-	if (
-		thisCategory[0].artworkSubcategory !== '' ||
-		thisCategory[0].artworkSubcategory !== null
-	) {
-		thisCategoryGallery = Object.entries(subCategories).map(([key, value]) => {
-			value.map((item) => {
-				// console.log(item.title, item.artworkSubcategory);
-				return (
-					<Link to={`/artwork/${item.id}`}>
-						<img
-							alt={item.title}
-							src={item.imgUrlLo ? item.imgUrlLo : item.imgUrlHi}
-						/>
-						<p>{item.title}</p>
-					</Link>
-				);
-			});
-		});
-	} else {
-		thisCategoryGallery = thisCategory.map((item) => {
-			// console.log(item.title);
-			return (
-				<Link to={`/artwork/${item.id}`}>
-					<img
-						alt={item.title}
-						src={item.imgUrlLo ? item.imgUrlLo : item.imgUrlHi}
-					/>
-					<p>{item.title}</p>
-				</Link>
+	/* CATEGORIZED GALLERY */
+
+	let artworkCategoryGallery = Object.entries(subCategories).map(
+		([key, value]) => {
+			console.log(
+				value.map((item, i) => {
+					return item.id;
+				})
 			);
-		});
-	}
-
-	console.log(thisCategoryGallery)
-
-	*/
-
-	// Object.keys(subCategories).map((key) => {
-	// 	return console.log(key);
-	// });
-	// }
-	// else {
-	// 	Object.keys(subCategories).map((subCategory) => {
-	// 		console.log(subCategory);
-	// 		return (
-	// 			<>
-	// 				<h3>{props.toTitleCase(subCategory)}</h3>
-	// 				{item.artworkSubcategory === subCategory ? (
-	// 					<Link to={`/artwork/${item.id}`}>
-	// 						<img
-	// 							alt={item.title}
-	// 							src={item.imgUrlLo ? item.imgUrlLo : item.imgUrlHi}
-	// 						/>
-	// 						<p>{item.title}</p>
-	// 					</Link>
-	// 				) : null}
-	// 			</>
-	// 		);
-	// 	});
-	// }
-	// });
-
-	// check for subcategory, if it's an empty string or null then there is none
-	// thisCategory[0].artworkSubcategory === '' ||
-	// thisCategory[0].artworkSubcategory === null
-	// 	? console.log('no subcategory')
-	// 	: Object.keys(subCategories).filter((key) => {
-	// 		console.log(key)
-	// 			return key;
-	// 	  });
-
-	// isolate categories without subs
-	// Object.keys(subCategories).filter((key) => {
-	// 	if (
-	// 		thisCategory[0].artworkSubcategory === '' ||
-	// 		thisCategory[0].artworkSubcategory === null
-	// 	) {
-	// 		console.log(key);
-	// 	}
-	// });
+			if (key !== 'null') {
+				return (
+					<>
+						<h2 className='artwork-subcategory-heading'>
+							{props.toTitleCase(key)}
+						</h2>
+						<div className='artwork-gallery-section'>
+							{value.map((item) => {
+								return (
+									<div>
+										<Link to={`/artwork/${item.id}`} key={item.id}>
+											<img alt={item.title} src={item.imgUrlHi} />
+											<p>{item.title}</p>
+										</Link>
+									</div>
+								);
+							})}
+						</div>
+					</>
+				);
+			} else {
+				return (
+					<div className='artwork-gallery-section'>
+						{value.map((item) => {
+							return (
+								<div>
+									<Link to={`/artwork/${item.id}`} key={item.id}>
+										<img alt={item.title} src={item.imgUrlHi} />
+										<p>{item.title}</p>
+									</Link>
+								</div>
+							);
+						})}
+						;
+					</div>
+				);
+			}
+		}
+	);
 
 	return (
 		<div className='artwork-subcat-container'>
@@ -171,7 +141,7 @@ const ArtworkSubcategory = (props) => {
 					]
 				)}
 			</h1>
-			<div className='artwork-gallery-section'>{thisCategoryGallery}</div>
+			{artworkCategoryGallery}
 		</div>
 	);
 };
