@@ -188,7 +188,7 @@ body {
 
 	background: rgba(162, 204, 252, 0.342);
 	text-align: center;
-	font-family: 'ubuntu'
+	font-family: 'ubuntu';
 }
 
 .artwork-form-subheading {
@@ -262,29 +262,6 @@ body {
 	margin: 0 1vmin;
 }
 
-/* .artwork-subcat-container {
-	padding: 2vmin;
-}
-
- */
-td a {
-	/* font-style: italic; */
-}
-
-td a:hover {
-	/* text-decoration: underline; */
-}
-
-/* .artwork-subcat-container > * {
-	padding: 10vmin;
-} */
-
-/* @media only screen and (min-width: 1650px) {
-	.subnav-container {
-		margin: 4vmin 30vw;
-		justify-content: space-evenly;
-	}} */
-
 /* Subcategory */
 
 .artwork-category-heading {
@@ -312,12 +289,12 @@ td a:hover {
 	text-align: center;
 	font-size: 1.5rem;
 	font-family: 'ubuntu';
-	letter-spacing: .15vmin;
+	letter-spacing: 0.15vmin;
 }
 
 .artwork-subcategory-heading {
 	font-size: 2.5rem;
-	letter-spacing: .5vmin;
+	letter-spacing: 0.5vmin;
 	font-family: 'ubuntu';
 	color: rgba(0, 100, 150, 0.7);
 	margin: 4rem 5vmin 2rem 5vmin;
@@ -375,6 +352,15 @@ td a:hover {
 /* .btn-info {
 	color: black;
 } */
+
+/* sign in / sign up*/
+.valid {
+	display: none;
+}
+
+.invalid {
+	color: red;
+}
 
 /* media queries */
 

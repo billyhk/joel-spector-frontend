@@ -34,7 +34,7 @@ class NavbarPage extends Component {
 				<MDBCollapse id='navbarCollapse3' isOpen={this.state.isOpen} navbar>
 					<MDBNavbarNav left>
 						<MDBNavItem>
-							<MDBNavLink to='/'>Home</MDBNavLink>
+							<MDBNavLink to='/' onClick={this.toggleCollapse}>Home</MDBNavLink>
 						</MDBNavItem>
 						<MDBNavItem>
 							<MDBDropdown>
@@ -72,6 +72,9 @@ class NavbarPage extends Component {
 									</div>
 								</MDBDropdownMenu>
 							</MDBDropdown>
+						</MDBNavItem>
+						<MDBNavItem>
+							<MDBNavLink to='/signin' onClick={this.toggleCollapse}>Sign In</MDBNavLink>
 						</MDBNavItem>
 						{/* <MDBNavItem>
 							<MDBNavLink to='#!'>The Joel Spector Foundation</MDBNavLink>

@@ -90,7 +90,7 @@ const ArtworkSubcategory = (props) => {
 						<div className='artwork-gallery-section'>
 							{value.map((item) => {
 								return (
-									<div>
+									<div key={item.id}>
 										<Link to={`/artwork/${item.id}`} key={item.id}>
 											<img alt={item.title} src={item.imgUrlHi} />
 											<p>{item.title}</p>
@@ -106,7 +106,7 @@ const ArtworkSubcategory = (props) => {
 					<div className='artwork-gallery-section'>
 						{value.map((item) => {
 							return (
-								<div>
+								<div key={item.id}>
 									<Link to={`/artwork/${item.id}`} key={item.id}>
 										<img alt={item.title} src={item.imgUrlHi} />
 										<p>{item.title}</p>

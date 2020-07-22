@@ -69,8 +69,8 @@ const ArtworkCreate = (props) => {
 	};
 
 	const artworkCategoriesOptions = Object.keys(artworkCategories).map(
-		(item) => {
-			return <option value={item}>{props.toTitleCase(item)}</option>;
+		(item, i) => {
+			return <option key={i} value={item}>{props.toTitleCase(item)}</option>;
 		}
 	);
 
@@ -84,7 +84,7 @@ const ArtworkCreate = (props) => {
 				handleDropdownSelect(event);
 				handleChange(event);
 			}}>
-			<option selected disabled hidden>
+			<option defaultValue disabled hidden>
 				Select Artwork Category
 			</option>
 			{artworkCategoriesOptions}

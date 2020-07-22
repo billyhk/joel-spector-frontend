@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useHistory } from 'react';
 import { Route } from 'react-router-dom';
-import { APIURL } from './config';
 
 //misc. components
 import NavBar from './components/NavBar/Navbar';
@@ -14,9 +13,23 @@ import ArtworkDetail from './components/Artwork/ArtworkDetail';
 import ArtworkUpdate from './components/Artwork/ArtworkUpdate';
 import ArtworkAll from './components/Artwork/ArtworkAll';
 
+// user
+import SignIn from './components/Password/SignIn';
+import SignUp from './components/Password/SignUp';
+import UserDetail from './components/User/UserDetail'
+
 const App = () => {
-	// const [artwork, setArtwork] = useState([]);
+	// let history = useHistory();
+
 	const [error, setError] = useState(false);
+	const [token, setToken] = useState('');
+
+	async function handleSignOut() {
+		await setToken(null);
+		localStorage.removeItem('token');
+		// return <Redirect to={'/'} />;
+		// history.push('/');
+	}
 
 	function scrollUp() {
 		window.scrollTo(0, 0);
@@ -52,7 +65,9 @@ const App = () => {
 					path='/artwork-category/:category'
 					render={() => {
 						return (
-							<ArtworkCategorySub toTitleCase={toTitleCase} scrollUp={scrollUp}
+							<ArtworkCategorySub
+								toTitleCase={toTitleCase}
+								scrollUp={scrollUp}
 							/>
 						);
 					}}
@@ -90,12 +105,33 @@ const App = () => {
 						);
 					}}
 				/>
-
 				<Route
 					exact
 					path='/artwork-all'
 					render={() => {
-						return <ArtworkAll toTitleCase={toTitleCase} scrollUp={scrollUp}/>;
+						return <ArtworkAll toTitleCase={toTitleCase} scrollUp={scrollUp} />;
+					}}
+				/>
+				<Route exact path='/signup' component={SignUp} />
+				<Route
+					exact
+					path='/signin'
+					render={(props) => {
+						return <SignIn setToken={setToken} />;
+					}}
+				/>{' '}
+				<Route
+					exact
+					path='/user'
+					render={(routerProps) => {
+						return (
+							<UserDetail
+								match={routerProps.match}
+								userToken={token}
+								handleSignOut={handleSignOut}
+								scrollUp={scrollUp}
+							/>
+						);
 					}}
 				/>
 			</main>
