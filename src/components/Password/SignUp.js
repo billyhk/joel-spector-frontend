@@ -14,6 +14,7 @@ const SignUp = (props) => {
 	const [adminValid, setAdminValid] = useState(true);
 	const [valid, setValid] = useState(true);
 	const [submit, setSubmit] = useState(false);
+	const [error, setError] = useState(false)
 	const [redirectToReferrer, setRedirectToReferrer] = useState(false);
 
 	const checkPassword = (e) => {
@@ -54,11 +55,12 @@ const SignUp = (props) => {
 				password: user.password,
 			}),
 		})
-			.then((res) => res.json())
+			// .then((res) => res.json())
 			.then((res) => {
-				console.log(res.status);
-				if (res) {
+				if (res.status === 200) {
 					setRedirectToReferrer(true);
+				} else {
+					setError(true)
 				}
 			})
 			.catch(console.error);
@@ -127,6 +129,9 @@ const SignUp = (props) => {
 						{adminValid ? null : 'Administrator Password is Incorrect'}
 					</p>
 				)}
+				{error && <p className='sign-up-error'>
+					That username has been taken already. Please choose a different one.
+				</p>}
 			</div>
 		</form>
 	);

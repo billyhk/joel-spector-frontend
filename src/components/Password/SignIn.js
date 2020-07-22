@@ -35,7 +35,7 @@ const SignIn = (props) => {
 			},
 			body: JSON.stringify(user),
 		})
-		.then(res => res.headers.get("authorization"))			
+		.then(res => res.headers.get("authorization"))
 		.then((token) => {
 				console.log(token);
 				if (token) {
