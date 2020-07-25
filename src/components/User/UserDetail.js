@@ -48,7 +48,6 @@ const User = (props) => {
 		props.handleSignOut();
 		return <Redirect to='/' />;
 	}
-
 	return (
 		<div className='user-account-wrapper'>
 			{!user ? (

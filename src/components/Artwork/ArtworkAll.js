@@ -86,7 +86,7 @@ const ArtworkAll = (props) => {
 			<Route
 				path='*'
 				render={() => {
-					return <ArtworkCategoryNav />;
+					return <ArtworkCategoryNav token={props.token}/>;
 				}}
 			/>
 			<div className='artwork-all-container'>

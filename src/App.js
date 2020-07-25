@@ -1,4 +1,4 @@
-import React, { useState, useHistory } from 'react';
+import React, { useState, useHistory, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 
 //misc. components
@@ -16,7 +16,7 @@ import ArtworkAll from './components/Artwork/ArtworkAll';
 // user
 import SignIn from './components/Password/SignIn';
 import SignUp from './components/Password/SignUp';
-import UserDetail from './components/User/UserDetail'
+import UserDetail from './components/User/UserDetail';
 
 const App = () => {
 	// let history = useHistory();
@@ -24,8 +24,9 @@ const App = () => {
 	const [error, setError] = useState(false);
 	const [token, setToken] = useState('');
 
+
 	async function handleSignOut() {
-		await setToken(null);
+		setToken(null);
 		localStorage.removeItem('token');
 		// return <Redirect to={'/'} />;
 		// history.push('/');
@@ -55,7 +56,13 @@ const App = () => {
 			<Route
 				path='*'
 				render={() => {
-					return <NavBar />;
+					return (
+						<NavBar
+							token={token}
+							setToken={setToken}
+							handleSignOut={handleSignOut}
+						/>
+					);
 				}}
 			/>
 			<main>
@@ -68,6 +75,7 @@ const App = () => {
 							<ArtworkCategorySub
 								toTitleCase={toTitleCase}
 								scrollUp={scrollUp}
+								token={token}
 							/>
 						);
 					}}
@@ -76,7 +84,9 @@ const App = () => {
 					exact
 					path='/artwork-create'
 					render={() => {
-						return <ArtworkCreate toTitleCase={toTitleCase} />;
+						return <ArtworkCreate toTitleCase={toTitleCase} token = { token }/>;
+														;
+
 					}}
 				/>
 				<Route
@@ -88,6 +98,7 @@ const App = () => {
 								{...routerProps}
 								scrollUp={scrollUp}
 								toTitleCase={toTitleCase}
+								token={token}
 							/>
 						);
 					}}
@@ -101,6 +112,7 @@ const App = () => {
 								{...routerProps}
 								scrollUp={scrollUp}
 								toTitleCase={toTitleCase}
+								token={token}
 							/>
 						);
 					}}
@@ -109,7 +121,13 @@ const App = () => {
 					exact
 					path='/artwork-all'
 					render={() => {
-						return <ArtworkAll toTitleCase={toTitleCase} scrollUp={scrollUp} />;
+						return (
+							<ArtworkAll
+								toTitleCase={toTitleCase}
+								scrollUp={scrollUp}
+								token={token}
+							/>
+						);
 					}}
 				/>
 				<Route exact path='/signup' component={SignUp} />

@@ -11,23 +11,17 @@ const SignIn = (props) => {
 	};
 	const [user, setUser] = useState(initialUserState);
 	const [redirectToReferrer, setRedirectToReferrer] = useState(false);
-	const [signInError, setSignInError] = useState(false)
-	const [submit, setSubmit] = useState(false)
+	const [signInError, setSignInError] = useState(false);
+	const [submit, setSubmit] = useState(false);
 
 	const handleChange = (e) => {
 		e.persist();
 		setUser({ ...user, [e.target.name]: e.target.value });
 	};
 
-	const handleKeyDown = (e) => {
-		if (e.key === 'Enter') {
-			signIn();
-		}
-	};
-
 	const signIn = (e) => {
 		e.preventDefault();
-		setSubmit(true)
+		setSubmit(true);
 		fetch(`${APIURL}/login`, {
 			method: 'POST',
 			headers: {
@@ -35,12 +29,12 @@ const SignIn = (props) => {
 			},
 			body: JSON.stringify(user),
 		})
-		.then(res => res.headers.get("authorization"))
-		.then((token) => {
+			.then((res) => res.headers.get('authorization'))
+			.then((token) => {
 				console.log(token);
 				if (token) {
 					props.setToken(token);
-					// localStorage.setItem('token', res.access);
+					localStorage.setItem('token', token);
 					setRedirectToReferrer(true);
 				} else {
 					setSignInError(true);
@@ -50,39 +44,46 @@ const SignIn = (props) => {
 	};
 
 	if (redirectToReferrer) {
-		return <Redirect to='/user' />;
+		// return <Redirect to='/user' />;
+		return <Redirect to='/' />;
 	}
 
 	return (
-		<form onSubmit={signIn} id='sign-in-form'>
-			<p>Sign in</p>
-			<label className='sign-in-text'>Username</label>
-			<input
-				required
-				type='username'
-				id='username'
-				name='username'
-				value={user.username}
-				onChange={handleChange}
-				onKeyDown={handleKeyDown}
-			/>
-			<br />
-			<label className='sign-in-text'>Password</label>
-			<input
-				required
-				type='password'
-				id='password'
-				name='password'
-				value={user.password}
-				onChange={handleChange}
-				onKeyDown={handleKeyDown}
-			/>
-			<div>
-				<button type='submit'>Login</button>
-				<Link to='/signup'><p>Don't have an account? Click here to sign up.</p></Link>
-			</div>
-			{signInError && submit ? <p className='signInError'>User information not found. Please try again.</p> : null}
-		</form>
+		<div className='loggin-container'>
+			<form onSubmit={signIn} id='sign-in-form'>
+				<p className='loggin-form-title'>Sign in</p>
+				<label className='sign-in-text'>Username</label>
+				<input
+					required
+					type='username'
+					id='username'
+					name='username'
+					value={user.username}
+					onChange={handleChange}
+				/>
+				<br />
+				<label className='sign-in-text'>Password</label>
+				<input
+					required
+					type='password'
+					id='password'
+					name='password'
+					value={user.password}
+					onChange={handleChange}
+				/>
+				<div>
+					<button type='submit'>Login</button>
+					<Link to='/signup'>
+						<p>Don't have an account? Click here to sign up.</p>
+					</Link>
+				</div>
+				{signInError && submit ? (
+					<p className='sign-in-error'>
+						User information not found. Please try again.
+					</p>
+				) : null}
+			</form>
+		</div>
 	);
 };
 

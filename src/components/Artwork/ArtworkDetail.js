@@ -106,18 +106,21 @@ const ArtworkDetail = (props) => {
 							onClick={history.goBack}>
 							Go Back
 						</button>
+						{props.token || localStorage.getItem('token') ? (
+							<Link
+								className='btn btn-info item'
+								to={`/artwork/${artworkId}/edit`}
+								onClick={props.scrollUp}>
+								Update Artwork Information
+							</Link>
+						) : null}{' '}
+					</div>
 
-						<Link
-							className='btn btn-info item'
-							to={`/artwork/${artworkId}/edit`}
-							onClick={props.scrollUp}>
-							Update Artwork Information
-						</Link>
-
+					{props.token || localStorage.getItem('token') ? (
 						<button onClick={onDeleteArtwork} className='btn btn-danger item'>
 							Delete This Work
 						</button>
-					</div>
+					) : null}
 				</div>
 			)}
 		</div>

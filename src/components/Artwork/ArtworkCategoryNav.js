@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-const ArtworkCategoryNav = () => (
+const ArtworkCategoryNav = (props) => (
 	<nav className='subnav-container'>
 		<div className='subnav-left'>
 			<Link
@@ -51,7 +51,7 @@ const ArtworkCategoryNav = () => (
 				}>
 				<span>All Works</span>
 			</Link>
-			<Link
+{		props.token || localStorage.getItem('token') ? 	(<Link
 				to='/artwork-create'
 				className={
 					window.location.href.indexOf('artwork-create') > -1
@@ -59,8 +59,8 @@ const ArtworkCategoryNav = () => (
 						: 'not-active'
 				}>
 				Add to the Collection (+){' '}
-			</Link>
-		</div>
+			</Link>) : null
+}		</div>
 	</nav>
 );
 

@@ -362,6 +362,33 @@ body {
 	color: red;
 }
 
+.loggin-container {
+	margin: 2rem auto;
+
+	display: grid;
+	justify-content: center;
+	align-items: center;
+}
+
+.loggin-form-title {
+	font-family: 'ubuntu';
+	text-align: center;
+}
+
+.sign-in-form {
+	display: grid;
+	margin: 2rem auto;
+	/* justify-content: space-between; */
+	/* display: grid;
+	justify-content: left;
+	align-items: center; */
+}
+.sign-in-form > * {
+	/* display: grid;
+	justify-content: space-between; */
+	/* width: 100%; */
+}
+
 /* media queries */
 
 @media only screen and (min-width: 1550px) {

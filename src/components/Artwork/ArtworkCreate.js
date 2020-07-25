@@ -70,7 +70,11 @@ const ArtworkCreate = (props) => {
 
 	const artworkCategoriesOptions = Object.keys(artworkCategories).map(
 		(item, i) => {
-			return <option key={i} value={item}>{props.toTitleCase(item)}</option>;
+			return (
+				<option key={i} value={item}>
+					{props.toTitleCase(item)}
+				</option>
+			);
 		}
 	);
 
@@ -126,29 +130,35 @@ const ArtworkCreate = (props) => {
 					return <ArtworkCategoryNav />;
 				}}
 			/>
-			<main className='artwork-form-container'>
-				<h1 id='artwork-form-heading-text'>Add Artwork</h1>
-				<p className='artwork-form-subheading'>
-					Please fill out the form below to add a new Joel Spector piece to the
-					database.
+			{props.token || localStorage.getItem('token') ? (
+				<main className='artwork-form-container'>
+					<h1 id='artwork-form-heading-text'>Add Artwork</h1>
+					<p className='artwork-form-subheading'>
+						Please fill out the form below to add a new Joel Spector piece to
+						the database.
+					</p>
+					{error && <p>Something went wrong... Please try again!</p>}
+					<form className='artwork-form-form' onSubmit={handleSubmit}>
+						<ArtworkForm
+							artwork={artwork}
+							handleChange={handleChange}
+							handleSubmit={handleSubmit}
+							toTitleCase={props.toTitleCase}
+							setFullCategory={setFullCategory}
+							setSecondDropdown={setSecondDropdown}
+							formSelectTag={formSelectTag}
+							secondDropdown={secondDropdown}
+							targetValue={targetValue}
+							handleSecondaryDropdownSelect={handleSecondaryDropdownSelect}
+							secondFormSelectTagOptions={secondFormSelectTagOptions}
+						/>
+					</form>
+				</main>
+			) : (
+				<p className='not-logged-in-message'>
+					Sorry, you must be logged in to view this page.
 				</p>
-				{error && <p>Something went wrong... Please try again!</p>}
-				<form className='artwork-form-form' onSubmit={handleSubmit}>
-					<ArtworkForm
-						artwork={artwork}
-						handleChange={handleChange}
-						handleSubmit={handleSubmit}
-						toTitleCase={props.toTitleCase}
-						setFullCategory={setFullCategory}
-						setSecondDropdown={setSecondDropdown}
-						formSelectTag={formSelectTag}
-						secondDropdown={secondDropdown}
-						targetValue={targetValue}
-						handleSecondaryDropdownSelect={handleSecondaryDropdownSelect}
-						secondFormSelectTagOptions={secondFormSelectTagOptions}
-					/>
-				</form>
-			</main>
+			)}{' '}
 		</div>
 	);
 };
