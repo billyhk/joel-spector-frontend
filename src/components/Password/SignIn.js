@@ -2,7 +2,7 @@ import React, { useState, setState } from 'react';
 import { APIURL } from '../../config';
 import { Redirect, Link } from 'react-router-dom';
 
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
+import { MDBBtn, MDBInput } from 'mdbreact';
 
 const SignIn = (props) => {
 	const initialUserState = {
@@ -31,7 +31,6 @@ const SignIn = (props) => {
 		})
 			.then((res) => res.headers.get('authorization'))
 			.then((token) => {
-				console.log(token);
 				if (token) {
 					props.setToken(token);
 					localStorage.setItem('token', token);
@@ -50,33 +49,31 @@ const SignIn = (props) => {
 
 	return (
 		<div className='loggin-container'>
-			<form onSubmit={signIn} id='sign-in-form'>
+			<form onSubmit={signIn} className='sign-in-form'>
 				<p className='loggin-form-title'>Sign in</p>
-				<label className='sign-in-text'>Username</label>
-				<input
+				<MDBInput
 					required
-					type='username'
-					id='username'
 					name='username'
-					value={user.username}
+					label='Username'
+					icon='user'
 					onChange={handleChange}
 				/>
-				<br />
-				<label className='sign-in-text'>Password</label>
-				<input
+				<MDBInput
 					required
-					type='password'
-					id='password'
 					name='password'
-					value={user.password}
+					type='password'
+					label='Password'
+					icon='lock'
 					onChange={handleChange}
 				/>
-				<div>
-					<button type='submit'>Login</button>
-					<Link to='/signup'>
-						<p>Don't have an account? Click here to sign up.</p>
-					</Link>
+				<div className='sign-in-submit-button-container'>
+					<MDBBtn type='submit' color='indigo'>
+						Login
+					</MDBBtn>
 				</div>
+				<Link to='/signup'>
+					<p className='sign-in-text' id='sign-in-toggle'>Don't have an account? Click here to sign up.</p>
+				</Link>
 				{signInError && submit ? (
 					<p className='sign-in-error'>
 						User information not found. Please try again.

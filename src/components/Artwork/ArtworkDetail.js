@@ -114,13 +114,12 @@ const ArtworkDetail = (props) => {
 								Update Artwork Information
 							</Link>
 						) : null}{' '}
-					</div>
-
 					{props.token || localStorage.getItem('token') ? (
 						<button onClick={onDeleteArtwork} className='btn btn-danger item'>
 							Delete This Work
 						</button>
 					) : null}
+					</div>
 				</div>
 			)}
 		</div>

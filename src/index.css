@@ -86,13 +86,13 @@ body {
 }
 
 #navbar a {
-	padding: 0 2vmin;
+	margin: 0;
 }
 
-#navbar a:hover {
+/* #navbar a:hover {
 	background: rgba(203, 249, 255, 0.5);
 	color: black;
-}
+} */
 
 #nav-dropdown-sub a {
 	/* border-bottom: none;
@@ -103,16 +103,14 @@ body {
 	display: flex; */
 }
 
-.nav-dropdown-item > * {
-	font-size: 2vmin;
+#nav-dropdown-item {
 	letter-spacing: 0.15vmin;
-
-	transition: 0.5s;
-	/* display: flex; */
+	font-size: 1.5rem;
+	margin: 0 auto;
 }
 
-.nav-dropdown-item > *:hover {
-	border-bottom: 1px solid black;
+#nav-dropdown-item:hover {
+	background: pink;
 }
 
 .nav-second-category {
@@ -139,6 +137,7 @@ body {
 .subnav-right {
 	border-top: 1.5px solid rgba(76, 116, 248, 0.37);
 }
+
 
 .subnav-left,
 .subnav-right {
@@ -280,6 +279,10 @@ body {
 	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
+.artwork-gallery-section div {
+	background: rgba(0, 0, 0, 0);
+}
+
 .artwork-gallery-section img {
 	width: 100%;
 	margin: 2%;
@@ -354,16 +357,16 @@ body {
 } */
 
 /* sign in / sign up*/
-.valid {
+#valid {
 	display: none;
 }
 
-.invalid {
+#invalid {
 	color: red;
 }
 
 .loggin-container {
-	margin: 2rem auto;
+	margin: 2rem;
 
 	display: grid;
 	justify-content: center;
@@ -373,20 +376,54 @@ body {
 .loggin-form-title {
 	font-family: 'ubuntu';
 	text-align: center;
+	font-size: 3rem;
 }
 
 .sign-in-form {
+	margin: 2rem;
+	padding: 2rem;
+	background: rgba(252, 215, 215, 0.308);
+	border-radius: 1ch;
 	display: grid;
-	margin: 2rem auto;
-	/* justify-content: space-between; */
-	/* display: grid;
-	justify-content: left;
-	align-items: center; */
+	width: 60vw;
 }
-.sign-in-form > * {
+
+.sign-in-text {
+	text-align: center;
+	margin: 0.5rem;
+}
+
+#admin-container-label,
+#sign-in-toggle {
+	font-family: 'ubuntu';
+}
+
+#admins-only-message {
+	font-weight: 500;
+	color: rgba(0, 0, 0, 0.644);
+}
+
+.sign-in-submit-button-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.sign-in-row {
+	/* background: black; */
+	display: flex;
+	justify-content: space-between;
 	/* display: grid;
 	justify-content: space-between; */
 	/* width: 100%; */
+}
+
+.sign-in-last-row {
+	display: grid;
+	justify-content: center;
+}
+
+.sign-in-submit {
 }
 
 /* media queries */
@@ -397,7 +434,7 @@ body {
 	}
 }
 
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 1260px) {
 	.subnav-container {
 		margin: 4vmin 25vw;
 	}
@@ -416,7 +453,7 @@ body {
 	}
 }
 
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 1000px) {
 	.subnav-left > a,
 	.subnav-right > a {
 		font-size: 1rem;

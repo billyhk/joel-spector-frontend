@@ -1,5 +1,5 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ArtworkCategoryNav = (props) => (
 	<nav className='subnav-container'>
@@ -11,7 +11,7 @@ const ArtworkCategoryNav = (props) => (
 						? 'active1'
 						: 'not-active'
 				}>
-				<span>Portraits</span>
+				Portraits
 			</Link>
 			<Link
 				to='/artwork-category/paintings'
@@ -20,7 +20,7 @@ const ArtworkCategoryNav = (props) => (
 						? 'active1'
 						: 'not-active'
 				}>
-				<span>Paintings</span>
+				Paintings
 			</Link>
 			<Link
 				to='/artwork-category/silverpoint'
@@ -29,7 +29,7 @@ const ArtworkCategoryNav = (props) => (
 						? 'active1'
 						: 'not-active'
 				}>
-				<span>Silverpoint</span>
+				Silverpoint
 			</Link>
 			<Link
 				to='/artwork-category/works_on_paper'
@@ -38,7 +38,7 @@ const ArtworkCategoryNav = (props) => (
 						? 'active1'
 						: 'not-active'
 				}>
-				<span>Works on Paper</span>
+				Works on Paper
 			</Link>
 		</div>
 		<div className='subnav-right'>
@@ -49,18 +49,20 @@ const ArtworkCategoryNav = (props) => (
 						? 'active1'
 						: 'not-active'
 				}>
-				<span>All Works</span>
+				All Works
 			</Link>
-{		props.token || localStorage.getItem('token') ? 	(<Link
-				to='/artwork-create'
-				className={
-					window.location.href.indexOf('artwork-create') > -1
-						? 'active1'
-						: 'not-active'
-				}>
-				Add to the Collection (+){' '}
-			</Link>) : null
-}		</div>
+			{props.token || localStorage.getItem('token') ? (
+				<Link
+					to='/artwork-create'
+					className={
+						window.location.href.indexOf('artwork-create') > -1
+							? 'active1'
+							: 'not-active'
+					}>
+					Add to the Collection (+){' '}
+				</Link>
+			) : null}{' '}
+		</div>
 	</nav>
 );
 

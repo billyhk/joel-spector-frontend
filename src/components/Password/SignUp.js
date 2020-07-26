@@ -1,6 +1,7 @@
 import React, { useState, setState } from 'react';
 import { APIURL } from '../../config';
 import { Redirect, Link } from 'react-router-dom';
+import { MDBBtn, MDBInput } from 'mdbreact';
 
 const SignUp = (props) => {
 	const initialUserState = {
@@ -16,34 +17,37 @@ const SignUp = (props) => {
 	const [submit, setSubmit] = useState(false);
 	const [error, setError] = useState(false);
 	const [redirectToReferrer, setRedirectToReferrer] = useState(false);
-	const [dropdownResult, setDropdownResult] = useState(null)
+	const [dropdownResult, setDropdownResult] = useState(null);
 
 	const handleDropdownSelect = (e) => {
-			setDropdownResult(e.target.value === 'Yes' ? (
-				<>
-					<label className='sign-in-text'>Administrator Password</label>
-					<input
-						required
-						type='password'
-						id='adminPassword'
-						name='adminPassword'
-						onChange={handleChange}
-					/>
-				</>
+		setDropdownResult(
+			e.target.value === 'Yes' ? (
+				<MDBInput
+					required
+					name='adminPassword'
+					label='Administrator Password'
+					icon='exclamation-triangle'
+					type='password'
+					onChange={handleChange}
+				/>
 			) : (
-				<p>We're sorry. Currently you must be an Administrator to hold an account.</p>
-			));
+				<p className='sign-in-text' id='admins-only-message'>
+					We're sorry. Currently you must be an Administrator to hold an
+					account.
+				</p>
+			)
+		);
 	};
 
 	const checkPassword = (e) => {
 		e.preventDefault();
 		setSubmit(true);
 		user.password === user.passwordConfirm ? setValid(true) : setValid(false);
-		user.adminPassword === process.env.ADMIN_KEY
+		user.adminPassword === process.env.REACT_APP_ADMIN_KEY
 			? setAdminValid(true)
 			: setAdminValid(false);
 		if (
-			user.adminPassword === process.env.ADMIN_KEY &&
+			user.adminPassword === process.env.REACT_APP_ADMIN_KEY &&
 			user.password === user.passwordConfirm
 		) {
 			setAdminValid(true);
@@ -90,41 +94,34 @@ const SignUp = (props) => {
 
 	return (
 		<div className='loggin-container'>
-			<form onSubmit={checkPassword} id='sign-in-form'>
+			<form onSubmit={checkPassword} className='sign-in-form'>
 				<p className='loggin-form-title'>Sign up</p>
-				<label className='sign-in-text'>Username</label>
-				<input
+				<MDBInput
 					required
-					type='username'
-					id='username'
 					name='username'
-					value={user.username}
+					label='Username'
+					icon='user'
 					onChange={handleChange}
 				/>
-				<br />
-				<label className='sign-in-text'>Password</label>
-				<input
+				<MDBInput
 					required
-					type='password'
-					id='password'
 					name='password'
-					value={user.password}
-					onChange={handleChange}
-				/>
-				<br />
-				<label className='sign-in-text'>Confirm Password</label>
-				<input
-					required
+					label='Password'
+					icon='lock'
 					type='password'
-					id='passwordConfirm'
-					name='passwordConfirm'
-					value={user.passwordConfirm}
 					onChange={handleChange}
 				/>
-				<br />
-				<label className='sign-in-text'>
-					Are You Signing Up As An Administrator?
-				</label>
+				<MDBInput
+					required
+					name='passwordConfirm'
+					label='Confirm Password'
+					icon='question'
+					type='password'
+					onChange={handleChange}
+				/>
+				<p className='sign-in-text' id='admin-container-label'>
+					Are you Signing up as an Administrator?
+				</p>
 
 				<select
 					required
@@ -141,31 +138,34 @@ const SignUp = (props) => {
 
 				{dropdownResult}
 				<br />
-
-				<div>
-					<button type='submit'>Submit</button>
-					<Link to='/signin'>
-						Already have an account? Click here to sign in
-					</Link>
-
-					{submit && (
-						<p className={valid ? 'valid' : 'invalid'}>
-							{valid ? null : 'Passwords Must Match'}
-						</p>
-					)}
-					{submit && (
-						<p className={adminValid ? 'valid' : 'invalid'}>
-							{' '}
-							{adminValid ? null : 'Administrator Password is Incorrect'}
-						</p>
-					)}
-					{error && (
-						<p className='sign-up-error'>
-							That username has been taken already. Please choose a different
-							one.
-						</p>
-					)}
+				<div className='sign-in-submit-button-container'>
+					<MDBBtn type='submit' color='indigo'>
+						Sign Up
+					</MDBBtn>
 				</div>
+
+				<Link to='/signin'>
+					<p className='sign-in-text' id='sign-in-toggle'>
+						Already have an account? Click here to sign in.
+					</p>
+				</Link>
+
+				{submit && (
+					<p className='sign-in-text' id={valid ? 'valid' : 'invalid'}>
+						{valid ? null : 'Passwords Must Match'}
+					</p>
+				)}
+				{submit && (
+					<p className='sign-in-text' id={adminValid ? 'valid' : 'invalid'}>
+						{' '}
+						{adminValid ? null : 'Administrator Password is Incorrect or Null'}
+					</p>
+				)}
+				{error && (
+					<p className='sign-up-error'>
+						That username has been taken already. Please choose a different one.
+					</p>
+				)}
 			</form>
 		</div>
 	);
