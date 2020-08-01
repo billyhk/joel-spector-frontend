@@ -74,8 +74,8 @@ const Navbar = (props) => {
 							</MDBDropdownMenu>
 						</MDBDropdown>
 					</MDBNavItem>
-					<MDBNavItem>
-						<MDBNavLink to='#!'>About the Artist</MDBNavLink>
+					<MDBNavItem onClick={toggleCollapse}>
+						<MDBNavLink to='/about'>About the Artist</MDBNavLink>
 					</MDBNavItem>
 					<MDBNavItem onClick={toggleCollapse}>
 						{props.token || localStorage.getItem('token') ? (

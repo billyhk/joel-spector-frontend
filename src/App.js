@@ -18,6 +18,9 @@ import SignIn from './components/Password/SignIn';
 import SignUp from './components/Password/SignUp';
 import UserDetail from './components/User/UserDetail';
 
+// /about
+import About from './components/About/About'
+
 const App = () => {
 	// let history = useHistory();
 
@@ -67,6 +70,7 @@ const App = () => {
 			/>
 			<main>
 				<Route exact path='/' component={Home} />
+				<Route exact path='/about' component={About} />
 				<Route
 					exact
 					path='/artwork-category/:category'
@@ -84,9 +88,7 @@ const App = () => {
 					exact
 					path='/artwork-create'
 					render={() => {
-						return <ArtworkCreate toTitleCase={toTitleCase} token = { token }/>;
-														;
-
+						return <ArtworkCreate toTitleCase={toTitleCase} token={token} />;
 					}}
 				/>
 				<Route
