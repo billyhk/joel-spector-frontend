@@ -11,6 +11,7 @@ const ArtworkAll = (props) => {
 	const [artwork, setArtwork] = useState([]);
 	const [error, setError] = useState(false);
 
+	/*
 	let fullCategory = artwork.map((item) => {
 		if (item.artworkSubcategory === '' || item.artworkSubcategory === null) {
 			return props.toTitleCase(item.artworkCategory);
@@ -20,6 +21,7 @@ const ArtworkAll = (props) => {
 			)}`;
 		}
 	});
+	*/
 
 	useEffect(() => {
 		props.scrollUp();
@@ -61,7 +63,13 @@ const ArtworkAll = (props) => {
 			},
 			{
 				label: 'Category',
-				field: 'fullCategory',
+				field: 'category',
+				sort: 'asc',
+				width: 400,
+			},
+			{
+				label: 'Subcategory',
+				field: 'subcategory',
 				sort: 'asc',
 				width: 400,
 			},
@@ -77,7 +85,8 @@ const ArtworkAll = (props) => {
 						<span className='click-for-detail'>{<MdFilterNone />}</span>
 					</Link>,
 				],
-				fullCategory: fullCategory[i],
+				category: props.toTitleCase(item.artworkCategory),
+				subcategory: item.artworkSubcategory !== null || '' ? props.toTitleCase(item.artworkSubcategory) : 'n/a'
 			};
 		}),
 	};
