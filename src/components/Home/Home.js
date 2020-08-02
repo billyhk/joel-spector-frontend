@@ -14,10 +14,10 @@ const Home = () => {
 			{artistStatementHome}{' '}
 			<p className='home-statement-signature'>Joel Spector</p>
 			</p></div>
-			<div className='home-contact-us-container'>
+			{/* <div className='home-contact-us-container'>
 				<p className='home-contact-us'>Contact Us</p>
 				<p className='home-contact-us-number'>1-(800)-634-8041</p>
-			</div>
+			</div> */}
 		</div>
 	);
 };

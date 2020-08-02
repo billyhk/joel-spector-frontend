@@ -1,4 +1,5 @@
 import React from 'react';
+import Section4Carousel from './AboutCarousel4';
 
 const About = () => {
 	const bioSection1 = `Joel Spector was born in Havana, Cuba on January 10, 1949. His mother and father, Issac and Matilde Spector, owned a successful shoe factory in the city. When Fidel Castro took power in Cuba, Joel and his sister, Dorana, left for the United States and lived for a brief time with family in Florida.`;
@@ -26,6 +27,17 @@ const About = () => {
 			alt='Joel with baby'
 		/>,
 	];
+	const bioSection3Photos = [
+		<img
+			src='https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-OperaNews.jpg'
+			alt=''
+		/>,
+		<img
+			src='https://jspect.s3.amazonaws.com/artwork-hi-res/oaj-at-nac.jpg'
+			alt=''
+		/>,
+	];
+
 
 	return (
 		<div className='home-wrapper'>
@@ -48,9 +60,15 @@ const About = () => {
 			</section>
 			<section className='about-bio-section'>
 				<p className='about-bio-section-text'>{bioSection3}</p>
+				<div className='bio-section-gallery'>
+					{bioSection3Photos.map((item) => {
+						return item;
+					})}
+				</div>
 			</section>
 			<section className='about-bio-section'>
 				<p className='about-bio-section-text'>{bioSection4}</p>
+				<Section4Carousel />
 			</section>
 		</div>
 	);

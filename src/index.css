@@ -16,7 +16,7 @@ body {
 /* Home */
 
 .home-wrapper {
-	padding-top: 3rem;
+	padding: 3rem;
 }
 
 .home-carousel-heading {
@@ -156,6 +156,11 @@ body {
 }
 
 /* Artwork Form */
+
+.form-img {
+	height: 450px;
+	padding: 2rem 0;
+}
 
 .artwork-form-container,
 .artwork-all-container {
@@ -455,13 +460,14 @@ body {
 
 .bio-section-gallery {
 	display: flex;
-	grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
 	justify-content: space-evenly;
+	/* overflow-y: auto; */
+	margin: 4rem;
 }
 
 .bio-section-gallery img {
-	height: 40vmin;
-	margin: 2rem auto;
+	height: 35vh;
 }
 
 /* media queries */
@@ -510,7 +516,7 @@ body {
 }
 @media only screen and (max-width: 700px) {
 	.bio-section-gallery {
-		display: grid;
+		/* display: grid; */
 	}
 }
 

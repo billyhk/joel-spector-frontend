@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { createHashHistory } from 'history';
-import DropArea from '../DropArea/DropArea';
+// import DropArea from '../DropArea/DropArea';
+import Dropzone from '../Dropzone/Dropzone';
 
 const ArtworkForm = (props) => {
 	const history = createHashHistory();
@@ -41,12 +42,15 @@ const ArtworkForm = (props) => {
 				required
 				onChange={props.handleChange}
 				name='title'></input>
-			<label>Image URL</label>
-			<input
-				value={props.artwork.imgUrlHi}
-				required
-				onChange={props.handleChange}
-				name='imgUrlHi'></input>{' '}
+			<label>Image</label>
+			{props.artwork.id ? (
+				<img
+					src={props.artwork.imgUrlHi}
+					alt={props.artwork.title}
+					className='form-img'
+				/>
+			) : null}
+			<Dropzone setImgUrl={props.setImgUrl}/>
 			<label>Date</label>
 			<input
 				value={props.artwork.date}

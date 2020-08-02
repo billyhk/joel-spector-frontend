@@ -23,6 +23,9 @@ const ArtworkCreate = (props) => {
 	const [createdId, setCreatedId] = useState(null);
 	const [error, setError] = useState(false);
 
+	const [imgUrl, setImgUrl] = useState('');
+
+
 	const handleChange = (e) => {
 		e.persist();
 		if (e.target.value === '') {
@@ -30,12 +33,12 @@ const ArtworkCreate = (props) => {
 		}
 		setArtwork({
 			...artwork,
+			imgUrlHi: imgUrl,
 			[e.target.name]: e.target.value,
 		});
 	};
 
 	const handleSubmit = (e) => {
-		console.log('called');
 		e.preventDefault();
 		const url = `${APIURL}/api/work`;
 
@@ -88,7 +91,7 @@ const ArtworkCreate = (props) => {
 				handleDropdownSelect(event);
 				handleChange(event);
 			}}>
-			<option defaultValue disabled hidden>
+			<option defaultValue hidden>
 				Select Artwork Category
 			</option>
 			{artworkCategoriesOptions}
@@ -151,6 +154,7 @@ const ArtworkCreate = (props) => {
 							targetValue={targetValue}
 							handleSecondaryDropdownSelect={handleSecondaryDropdownSelect}
 							secondFormSelectTagOptions={secondFormSelectTagOptions}
+							setImgUrl={setImgUrl}
 						/>
 					</form>
 				</main>
