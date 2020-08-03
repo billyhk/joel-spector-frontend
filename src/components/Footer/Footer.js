@@ -7,7 +7,9 @@ const FooterPage = () => {
 			<MDBContainer fluid className='text-center text-md-left'>
 				<MDBRow>
 					<MDBCol md='6'>
-						<h4 className='title' style={{ textAlign: 'center', fontFamily: 'ubuntu' }}>
+						<h4
+							className='title'
+							style={{ textAlign: 'center', fontFamily: 'ubuntu' }}>
 							Joel Spector
 						</h4>
 						<h6 className='title' style={{ textAlign: 'center' }}>
@@ -46,7 +48,13 @@ const FooterPage = () => {
 			<div className='footer-copyright text-center py-3'>
 				<MDBContainer fluid>
 					&copy; {new Date().getFullYear()} Copyright:{' '}
-					<a href='https://www.linkedin.com/in/ari-spector/'> Ari Spector </a>
+					<a
+						href='https://www.linkedin.com/in/ari-spector/'
+						target='_blank'
+						rel='noopener noreferrer'>
+						{' '}
+						Ari Spector{' '}
+					</a>
 				</MDBContainer>
 			</div>
 		</MDBFooter>
