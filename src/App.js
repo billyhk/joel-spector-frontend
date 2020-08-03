@@ -185,7 +185,7 @@ const App = () => {
 					/>
 				</Switch>
 			</main>
-			<footer>{/* <Route path='*' component={Footer} /> */}</footer>
+			<footer><Route path='*' component={Footer} /></footer>
 		</>
 	);
 };

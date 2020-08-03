@@ -5,8 +5,6 @@ import { createHashHistory } from 'history';
 import ArtworkCategoryNav from './ArtworkCategoryNav';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
-// import artworkData from './data/jspectDB.json';
-
 const ArtworkDetail = (props) => {
 	const history = createHashHistory();
 

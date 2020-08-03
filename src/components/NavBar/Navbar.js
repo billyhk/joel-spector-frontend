@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import {
 	MDBNavbar,
 	MDBNavbarBrand,
@@ -31,11 +30,11 @@ const Navbar = (props) => {
 			<MDBNavbarBrand>
 				<div className='nav-caption-container'>
 					<strong className='nav-caption'>Joel Spector</strong>
-					<img
+					{/* <img
 						src='https://jspect.s3.amazonaws.com/artwork-hi-res/signature.jpg'
 						alt='signature'
 						style={{ width: '200px', borderRadius: '25px' }}
-					/>
+					/> */}
 				</div>
 			</MDBNavbarBrand>
 			<MDBNavbarToggler onClick={toggleCollapse} />
