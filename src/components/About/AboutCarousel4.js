@@ -40,13 +40,22 @@ const CarouselPage = () => {
 			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-6.jpg',
 			alt: '',
 		},
+		{
+			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/oaj-at-nac.jpg',
+			alt: '',
+		},
 	];
 
 	const carouselItems = bioSection4Photos.map((item, i) => {
 		return (
 			<MDBCarouselItem itemId={i + 1}>
 				<MDBView>
-					<img className='d-block w-100' src={item.src} alt={item.alt} />
+					<img
+						className='d-block w-100'
+						src={item.src}
+						alt={item.alt}
+						width='20%'
+					/>
 				</MDBView>
 			</MDBCarouselItem>
 		);

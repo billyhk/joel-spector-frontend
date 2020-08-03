@@ -29,11 +29,18 @@ const Navbar = (props) => {
 	return (
 		<MDBNavbar color='light-blue' dark expand='md' id='navbar'>
 			<MDBNavbarBrand>
-				<strong className='nav-caption'>Joel Spector</strong>
+				<div className='nav-caption-container'>
+					<strong className='nav-caption'>Joel Spector</strong>
+					<img
+						src='https://jspect.s3.amazonaws.com/artwork-hi-res/signature.jpg'
+						alt='signature'
+						style={{ width: '200px', borderRadius: '25px' }}
+					/>
+				</div>
 			</MDBNavbarBrand>
 			<MDBNavbarToggler onClick={toggleCollapse} />
 			<MDBCollapse id='navbarCollapse3' isOpen={isOpen} navbar>
-				<MDBNavbarNav left>
+				<MDBNavbarNav right>
 					<MDBNavItem>
 						<MDBNavLink to='/' onClick={toggleCollapse}>
 							Home
@@ -98,7 +105,7 @@ const Navbar = (props) => {
 				<MDBNavbarNav right>
 					<MDBNavItem>
 						{props.token || localStorage.getItem('token') ? (
-							<h3>Logged in as Admin</h3>
+							<h3 className='logged-in'>Logged in as Admin</h3>
 						) : null}
 					</MDBNavItem>
 				</MDBNavbarNav>

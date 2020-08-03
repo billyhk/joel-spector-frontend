@@ -1,5 +1,5 @@
 import React from 'react';
-import Section4Carousel from './AboutCarousel4';
+import Gallery from 'react-grid-gallery';
 
 const About = () => {
 	const bioSection1 = `Joel Spector was born in Havana, Cuba on January 10, 1949. His mother and father, Issac and Matilde Spector, owned a successful shoe factory in the city. When Fidel Castro took power in Cuba, Joel and his sister, Dorana, left for the United States and lived for a brief time with family in Florida.`;
@@ -8,68 +8,248 @@ const About = () => {
 	const bioSection4 = `As his artistic ability grew, he focused his career in portraiture and oil painting, and taught his craft at the Art League of Long Island and the Pastel Society of America. He was a member of the Painting Group of Manhattan, studied under Aaron Shikler and David Levine. Joel died on October 13, 2016. His art was a constant search for love, humanity, and compassion.`;
 
 	const bioSection1Photos = [
-		<img
-			src='https://jspect.s3.amazonaws.com/artwork-hi-res/joel-young-gun.JPG'
-			alt='Joel with gun'
-		/>,
-		<img
-			src='https://jspect.s3.amazonaws.com/artwork-hi-res/joel-dorana.JPG'
-			alt='Joel with Sister'
-		/>,
-	];
-	const bioSection2Photos = [
-		<img
-			src='https://jspect.s3.amazonaws.com/artwork-hi-res/joel-profile.JPG'
-			alt='Joel Older Profile View'
-		/>,
-		<img
-			src='https://jspect.s3.amazonaws.com/artwork-hi-res/joel-father.JPG'
-			alt='Joel with baby'
-		/>,
-	];
-	const bioSection3Photos = [
-		<img
-			src='https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-OperaNews.jpg'
-			alt=''
-		/>,
-		<img
-			src='https://jspect.s3.amazonaws.com/artwork-hi-res/oaj-at-nac.jpg'
-			alt=''
-		/>,
+		{
+			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-young-gun.JPG',
+			thumbnail:
+				'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-young-gun.JPG',
+			alt: 'Joel with gun',
+			caption: 'Joel with gun',
+		},
 	];
 
+	const bioSection2Photos = [
+		{
+			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-dorana.JPG',
+			thumbnail:
+				'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-dorana.JPG',
+
+			alt: 'Joel with Sister',
+		},
+	];
+
+	const bioSection3_1Photos = [
+		{
+			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-father.JPG',
+			thumbnail:
+				'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-father.JPG',
+			alt: 'Joel with baby',
+		},
+	];
+
+	const bioSection3_2Photos = [
+		{
+			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-profile.JPG',
+			thumbnail:
+				'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-profile.JPG',
+			alt: 'Joel Older Profile View',
+		},
+	];
+
+	const bioSection3_3Photos = [
+		{
+			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/CaptainMorgan.jpg',
+			thumbnail:
+				'https://jspect.s3.amazonaws.com/artwork-hi-res/CaptainMorgan.jpg',
+			alt: '',
+		},
+		{
+			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover1.png',
+			thumbnail: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover1.png',
+			alt: '',
+		},
+		{
+			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover2.png',
+			thumbnail: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover2.png',
+			alt: '',
+		},
+		{
+			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover3.png',
+			thumbnail: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover3.png',
+			alt: '',
+		},
+		{
+			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover4.png',
+			thumbnail: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover4.png',
+			alt: '',
+		},
+		{
+			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover5.png',
+			thumbnail: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover5.png',
+			alt: '',
+		},
+		{
+			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover6.png',
+			thumbnail: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover6.png',
+			alt: '',
+		},
+		{
+			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover7.png',
+			thumbnail: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover7.png',
+			alt: '',
+		},
+		{
+			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover8.jpg',
+			thumbnail: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover9.jpg',
+			alt: '',
+		},
+	];
+
+	const bioSection4Photos = [
+		{
+			src:
+				'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-OperaNews.jpg',
+			thumbnail:
+				'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-OperaNews.jpg',
+			alt: '',
+		},
+		{
+			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-7.jpg',
+			thumbnail:
+				'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-7.jpg',
+			alt: '',
+		},
+		{
+			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-5.jpg',
+			thumbnail:
+				'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-5.jpg',
+			alt: '',
+		},
+		{
+			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-1.jpg',
+			thumbnail:
+				'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-1.jpg',
+
+			alt: '',
+		},
+		{
+			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-3.jpg',
+			thumbnail:
+				'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-3.jpg',
+
+			alt: '',
+		},
+		{
+			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/joel%2Bwallach.jpg',
+			thumbnail:
+				'https://jspect.s3.amazonaws.com/artwork-hi-res/joel%2Bwallach.jpg',
+
+			alt: '',
+		},
+		{
+			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-4.jpg',
+			thumbnail:
+				'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-4.jpg',
+
+			alt: '',
+		},
+		{
+			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-2.jpg',
+			thumbnail:
+				'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-2.jpg',
+
+			alt: '',
+		},
+		{
+			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-6.jpg',
+			thumbnail:
+				'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-6.jpg',
+
+			alt: '',
+		},
+		{
+			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/oaj-at-nac.jpg',
+			thumbnail:
+				'https://jspect.s3.amazonaws.com/artwork-hi-res/oaj-at-nac.jpg',
+
+			alt: '',
+		},
+	];
 
 	return (
-		<div className='home-wrapper'>
+		<div className='about-wrapper'>
 			<div className='about-title'>About the Artist</div>
 			<section className='about-bio-section'>
 				<p className='about-bio-section-text'>{bioSection1}</p>
-				<div className='bio-section-gallery'>
-					{bioSection1Photos.map((item) => {
-						return item;
-					})}
+				<div
+					style={{
+						display: 'block',
+						minHeight: '1px',
+						width: '350px',
+						margin: '0 2rem',
+						padding: '2vmin',
+						background: 'lightgrey',
+						borderRadius: '5vmin',
+					}}>
+					<Gallery images={bioSection1Photos} enableImageSelection={false} />{' '}
 				</div>
 			</section>
 			<section className='about-bio-section'>
-				<p className='about-bio-section-text'>{bioSection2}</p>{' '}
-				<div className='bio-section-gallery'>
-					{bioSection2Photos.map((item) => {
-						return item;
-					})}
+				<div
+					style={{
+						display: 'block',
+						minHeight: '1px',
+						width: '350px',
+						margin: '0 2rem',
+						padding: '2vmin',
+						background: 'lightgrey',
+						borderRadius: '5vmin',
+					}}>
+					<Gallery images={bioSection2Photos} enableImageSelection={false} />{' '}
 				</div>
+				<p className='about-bio-section-text'>{bioSection2}</p>{' '}
 			</section>
 			<section className='about-bio-section'>
 				<p className='about-bio-section-text'>{bioSection3}</p>
-				<div className='bio-section-gallery'>
-					{bioSection3Photos.map((item) => {
-						return item;
-					})}
+				<div
+					style={{
+						display: 'block',
+						minHeight: '1px',
+						width: '350px',
+						margin: '0 2rem',
+						padding: '2vmin',
+						background: 'lightgrey',
+						borderRadius: '5vmin',
+					}}>
+					<Gallery images={bioSection3_1Photos} enableImageSelection={false} />{' '}
 				</div>
 			</section>
+			<div
+				style={{
+					display: 'block',
+					minHeight: '1px',
+					width: '70vw',
+					margin: '0 auto',
+					padding: '2vmin',
+					borderRadius: '5vmin',
+				}}>
+				<Gallery images={bioSection3_3Photos} enableImageSelection={false} />{' '}
+			</div>
 			<section className='about-bio-section'>
-				<p className='about-bio-section-text'>{bioSection4}</p>
-				<Section4Carousel />
+				<div
+					style={{
+						display: 'block',
+						minHeight: '1px',
+						width: '350px',
+						margin: '0 2rem',
+						padding: '2vmin',
+						background: 'lightgrey',
+						borderRadius: '5vmin',
+					}}>
+					<Gallery images={bioSection3_2Photos} enableImageSelection={false} />{' '}
+				</div>
+				<p className='about-bio-section-text'>{bioSection4}</p>{' '}
 			</section>
+			<div
+				style={{
+					display: 'block',
+					minHeight: '1px',
+					width: '70vw',
+					margin: '0 auto',
+					padding: '2vmin',
+					borderRadius: '5vmin',
+				}}>
+				<Gallery images={bioSection4Photos} enableImageSelection={false} />{' '}
+			</div>
 		</div>
 	);
 };
