@@ -60,11 +60,6 @@ const About = () => {
 			alt: '',
 		},
 		{
-			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover2.png',
-			thumbnail: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover2.png',
-			alt: '',
-		},
-		{
 			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover3.png',
 			thumbnail: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover3.png',
 			alt: '',
