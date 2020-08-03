@@ -2,7 +2,6 @@ import React, { useState, useHistory, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { APIURL } from './config';
 
-
 //misc. components
 import NavBar from './components/NavBar/Navbar';
 import Home from './components/Home/Home';
@@ -24,35 +23,32 @@ import UserDetail from './components/User/UserDetail';
 import About from './components/About/About';
 
 const App = () => {
-	// let history = useHistory();
-
 	const [error, setError] = useState(false);
 	const [token, setToken] = useState('');
-	const [artworkAllLength, setArtworkAllLength] = useState()
+	const [artworkAllLength, setArtworkAllLength] = useState();
 
+	// when a user signs out, the state of token and the token in localStorage both need to be cleared on sign out
 	async function handleSignOut() {
 		setToken(null);
 		localStorage.removeItem('token');
-		// return <Redirect to={'/'} />;
-		// history.push('/');
 	}
 
+	// some components should be rendered with the viewport starting at the top
 	function scrollUp() {
 		window.scrollTo(0, 0);
 	}
 
+	// fetch the artwork for the artwork database length-- this gets passed down to ArtworkDetail for the range of navigation controls
 	useEffect(() => {
 		fetchMyApi();
 		// eslint-disable-next-line
 	}, []);
-
 	async function fetchMyApi() {
 		await fetch(`${APIURL}/api/work`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				Accept: 'application/json',
-				// Authorization: `Bearer ${localStorage.getItem('token')}`,
 			},
 		})
 			.then((response) => response.json())
@@ -64,8 +60,7 @@ const App = () => {
 			});
 	}
 
-
-	// convert data to Title Case
+	// converts text from data to Title Case
 	function toTitleCase(str) {
 		return str
 			.replace(/([a-z])([A-Z])/g, function (
@@ -185,7 +180,9 @@ const App = () => {
 					/>
 				</Switch>
 			</main>
-			<footer><Route path='*' component={Footer} /></footer>
+			<footer>
+				<Route path='*' component={Footer} />
+			</footer>
 		</>
 	);
 };

@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { APIURL } from '../../config';
-
 import { Link, Route } from 'react-router-dom';
 import ArtworkCategoryNav from './ArtworkCategoryNav';
 import { MDBDataTableV5 } from 'mdbreact';
-// import artworkData from './data/jspectDB.json';
 import { MdFilterNone } from 'react-icons/md';
 
 const ArtworkAll = (props) => {
 	const [artwork, setArtwork] = useState([]);
 	const [error, setError] = useState(false);
 
+	// make a fetch call to get the artwork objects
 	useEffect(() => {
 		props.scrollUp();
 		fetchMyApi();
@@ -34,7 +33,7 @@ const ArtworkAll = (props) => {
 				setError(true);
 			});
 	}
-
+	// data gets passed into the MDBDataTable
 	const data = {
 		columns: [
 			{
@@ -63,8 +62,8 @@ const ArtworkAll = (props) => {
 			},
 		],
 		rows: artwork.map((item, i) => {
+			// the table must include links to the ArtworkDetail.js 
 			let idUrl = `/artwork/${item.id}`;
-
 			return {
 				id: item.id,
 				title: [
@@ -74,7 +73,10 @@ const ArtworkAll = (props) => {
 					</Link>,
 				],
 				category: props.toTitleCase(item.artworkCategory),
-				subcategory: item.artworkSubcategory !== null || '' ? props.toTitleCase(item.artworkSubcategory) : 'n/a'
+				subcategory:
+					item.artworkSubcategory !== null || ''
+						? props.toTitleCase(item.artworkSubcategory)
+						: 'n/a',
 			};
 		}),
 	};
@@ -83,7 +85,7 @@ const ArtworkAll = (props) => {
 			<Route
 				path='*'
 				render={() => {
-					return <ArtworkCategoryNav token={props.token}/>;
+					return <ArtworkCategoryNav token={props.token} />;
 				}}
 			/>
 			<div className='artwork-all-container'>

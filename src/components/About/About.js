@@ -7,6 +7,8 @@ const About = () => {
 	const bioSection3 = `Joel graduated from the Fashion Institute of Technology and attended the Art Students League. He started his career by doing fashion illustrations and advertisements, later on his work would appear in children’s books, magazines, and newspapers. In 1990, Joel Spector moved to New Milford, Connecticut with his wife, Rowena, where they would raise their four children. He received his MFA at Western Connecticut State University in 2005.`;
 	const bioSection4 = `As his artistic ability grew, he focused his career in portraiture and oil painting, and taught his craft at the Art League of Long Island and the Pastel Society of America. He was a member of the Painting Group of Manhattan, studied under Aaron Shikler and David Levine. Joel died on October 13, 2016. His art was a constant search for love, humanity, and compassion.`;
 
+
+	// the following bioSectionNPhotos arrays are divided by which thumbnail-carousel component it will be included in
 	const bioSection1Photos = [
 		{
 			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-young-gun.JPG',

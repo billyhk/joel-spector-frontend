@@ -6,13 +6,16 @@ body {
 	background: url(https://cdn.hipwallpaper.com/i/69/76/Iqbc14.jpg) 100% 100%;
 	width: 100%;
 	height: 100%;
-	/* max-height: 100%; */
 	background-repeat: no-repeat;
 	background-size: cover;
 	-webkit-background-size: cover;
 }
 
-/* Home */
+/* 
+////////////////// 
+///// HOME ///////
+//////////////////
+ */
 
 .home-wrapper {
 	padding: 3rem;
@@ -21,9 +24,7 @@ body {
 .home-carousel-heading {
 	color: white;
 	font-size: 8vmin;
-
 	padding: 1vmin;
-
 	position: relative;
 	top: 4vh;
 }
@@ -54,7 +55,6 @@ body {
 
 .home-contact-us-container {
 	text-align: center;
-
 	display: grid;
 	justify-content: center;
 	align-items: center;
@@ -71,7 +71,11 @@ body {
 	font-size: 1rem;
 }
 
-/* Nav-Header */
+/* 
+//////////////////////
+/////// NavBar ///////
+//////////////////////
+ */
 
 .nav-caption-container {
 	display: grid;
@@ -99,20 +103,6 @@ body {
 	text-align: center;
 }
 
-/* #navbar a:hover {
-	background: rgba(203, 249, 255, 0.5);
-	color: black;
-} */
-
-#nav-dropdown-sub a {
-	/* border-bottom: none;
-	font-size: 2vmin;
-	padding: 0 1vmin;
-	letter-spacing: 0.15vmin;
-	
-	display: flex; */
-}
-
 #nav-dropdown-item {
 	letter-spacing: 0.15vmin;
 	font-size: 1.5rem;
@@ -127,7 +117,11 @@ body {
 	border-top: 2px solid grey;
 }
 
-/* Subnav */
+/* 
+////////////////////////////////////////////
+// Artwork/ArtworkCategoryNav.js (SubNav) //
+////////////////////////////////////////////
+ */
 
 .subnav-container {
 	display: grid;
@@ -148,11 +142,6 @@ body {
 	border-top: 1.5px solid rgba(76, 116, 248, 0.37);
 }
 
-.subnav-left,
-.subnav-right {
-	/* margin: 1rem 1rem; */
-}
-
 .subnav-left > a,
 .subnav-right > a {
 	margin: 1rem 0rem;
@@ -165,7 +154,11 @@ body {
 	color: rgb(81, 83, 119);
 }
 
-/* Artwork Form */
+/* 
+////////////////////////////
+// Artwork/ArtworkForm.js //
+////////////////////////////
+ */
 
 .form-img {
 	height: 450px;
@@ -176,7 +169,6 @@ body {
 .artwork-all-container {
 	display: grid;
 	align-items: center;
-	/* justify-content: center; */
 	margin-top: 2rem;
 	padding: 2rem 15vw;
 }
@@ -186,10 +178,7 @@ body {
 }
 
 #all-artwork-heading-text {
-	/* border-left: 2px solid black; */
 	border-bottom: 2px solid black;
-
-	/* margin: 2vmin 10rem; */
 	text-align: center;
 	font-family: 'ubuntu';
 }
@@ -264,7 +253,11 @@ body {
 	max-height: 50vh;
 }
 
-/* Artwork All */
+/* 
+////////////////////////////
+// Artwork/ArtworkAll.js //
+////////////////////////////
+ */
 
 .artwork-all-table {
 }
@@ -275,7 +268,11 @@ body {
 	margin: 0 1vmin;
 }
 
-/* Subcategory */
+/* 
+///////////////////////////////////
+// Artwork/ArtworkCategorySub.js //
+///////////////////////////////////
+ */
 
 .artwork-category-heading {
 	border-bottom: 2px solid black;
@@ -300,9 +297,7 @@ body {
 }
 
 .artwork-gallery-section img {
-	/* width: 100%; */
 	width: 250px;
-	/* height: 400px; */
 }
 .artwork-gallery-section p {
 	text-align: center;
@@ -320,16 +315,15 @@ body {
 	text-align: center;
 }
 
-/* artwork-detail */
+/* 
+//////////////////////////////
+// Artwork/ArtworkDetail.js //
+//////////////////////////////
+ */
 
 .detail-pointer-arrow {
 	margin: 2rem;
 	font-size: 2rem;
-}
-
-.artwork-detail-container-container {
-	/* margin: 0 auto;
-	display: grid; */
 }
 
 .artwork-detail-container {
@@ -373,12 +367,13 @@ body {
 	margin: 1rem;
 }
 
-/* .btn-info {
-	color: black;
-} */
+/* 
+//////////////////////////////////////
+// Password/ SignIn.js & SignUp.js ///
+//////////////////////////////////////
+ */
 
-/* sign in / sign up*/
-#valid {
+ #valid {
 	display: none;
 }
 
@@ -438,12 +433,8 @@ body {
 }
 
 .sign-in-row {
-	/* background: black; */
 	display: flex;
 	justify-content: space-between;
-	/* display: grid;
-	justify-content: space-between; */
-	/* width: 100%; */
 }
 
 .sign-in-last-row {
@@ -451,10 +442,11 @@ body {
 	justify-content: center;
 }
 
-.sign-in-submit {
-}
-
-/* ABOUT */
+/* 
+///////////////////////////////
+//////////// About ////////////
+///////////////////////////////
+ */
 
 .about-wrapper {
 	display: grid;
@@ -482,12 +474,15 @@ body {
 	font-family: arial;
 	font-weight: 400;
 	font-size: 2.5vmin;
-	/* line-height: 2rem; */
 	letter-spacing: 0.1vmin;
 	text-indent: 8%;
 }
 
-/* media queries */
+/* 
+///////////////////////////////
+//////////// @media////////////
+///////////////////////////////
+ */
 
 @media only screen and (min-width: 1550px) {
 	.home-artist-statement {
@@ -523,18 +518,8 @@ body {
 	.size-inputs-labels {
 		display: grid;
 	}
-
-	/* .artwork-detail-buttons-container {
-		display: grid;
-	}
-	.artwork-detail-buttons-container > button, .artwork-detail-buttons-container > a {
-		border-radius: 4ch;
-	} */
 }
 @media only screen and (max-width: 700px) {
-	.bio-section-gallery {
-		/* display: grid; */
-	}
 	.logged-in {
 		font-size: 1rem;
 	}
@@ -553,9 +538,6 @@ body {
 	.subnav-right {
 		display: grid;
 	}
-	/* .subnav-right {
-		border-top: 2px solid rgba(76, 116, 248, 0.37);
-	} */
 	.subnav-left > a,
 	.subnav-right > a {
 		font-size: 1rem;
