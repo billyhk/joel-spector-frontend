@@ -3,6 +3,7 @@ import { APIURL } from '../../config';
 import { Link, Route, Redirect } from 'react-router-dom';
 import { createHashHistory } from 'history';
 import ArtworkCategoryNav from './ArtworkCategoryNav';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 // import artworkData from './data/jspectDB.json';
 
@@ -68,13 +69,20 @@ const ArtworkDetail = (props) => {
 		return <Redirect to={`/artwork-all`} />;
 	}
 
-	// console.log(artworkId,
-	// 	artworkData.map((item) => {
-	// 		if (item.id === artworkId) {
-	// 			return item;
-	// 		}
-	// 	})
-	// );
+	const artworkRefresh = () => {
+		fetchMyApi()
+			.then(() => {
+				window.location.reload();
+			})
+			.then(() => {
+				props.scrollUp();
+			});
+	};
+
+	const goBack = () => {
+		history.goBack();
+		artworkRefresh();
+	};
 
 	return (
 		<div className='artwork-detail-container-container'>
@@ -97,13 +105,27 @@ const ArtworkDetail = (props) => {
 						<h4 className='artwork-detail-description'>
 							{artwork.description}
 						</h4>
+						{artworkId > 1 ? (
+							<Link
+								to={`/artwork/${parseInt(artworkId) - 1}`}
+								onClick={artworkRefresh}>
+								<FaArrowLeft className='detail-pointer-arrow' />
+							</Link>
+						) : null}{' '}
+						{artworkId < props.artworkAllLength ? (
+							<Link
+								to={`/artwork/${parseInt(artworkId) + 1}`}
+								onClick={artworkRefresh}>
+								<FaArrowRight className='detail-pointer-arrow' />
+							</Link>
+						) : null}{' '}
 					</div>
 
 					<div className='artwork-detail-buttons-container'>
 						<button
 							className='btn btn-dark'
 							id='cancel-button'
-							onClick={history.goBack}>
+							onClick={goBack}>
 							Go Back
 						</button>
 						{props.token || localStorage.getItem('token') ? (
@@ -114,11 +136,11 @@ const ArtworkDetail = (props) => {
 								Update Artwork Information
 							</Link>
 						) : null}{' '}
-					{props.token || localStorage.getItem('token') ? (
-						<button onClick={onDeleteArtwork} className='btn btn-danger item'>
-							Delete This Work
-						</button>
-					) : null}
+						{props.token || localStorage.getItem('token') ? (
+							<button onClick={onDeleteArtwork} className='btn btn-danger item'>
+								Delete This Work
+							</button>
+						) : null}
 					</div>
 				</div>
 			)}

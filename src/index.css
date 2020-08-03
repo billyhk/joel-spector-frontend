@@ -92,7 +92,8 @@ body {
 	font-size: 3.5vmin;
 }
 
-#navbar a, .logged-in {
+#navbar a,
+.logged-in {
 	margin: 0;
 	padding: 1rem;
 	text-align: center;
@@ -322,6 +323,11 @@ body {
 
 /* artwork-detail */
 
+.detail-pointer-arrow {
+	margin: 2rem;
+	font-size: 2rem;
+}
+
 .artwork-detail-container-container {
 	/* margin: 0 auto;
 	display: grid; */
@@ -529,6 +535,9 @@ body {
 @media only screen and (max-width: 700px) {
 	.bio-section-gallery {
 		/* display: grid; */
+	}
+	.logged-in {
+		font-size: 1rem;
 	}
 }
 

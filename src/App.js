@@ -1,5 +1,7 @@
 import React, { useState, useHistory, useEffect } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import { APIURL } from './config';
+
 
 //misc. components
 import NavBar from './components/NavBar/Navbar';
@@ -19,14 +21,14 @@ import SignUp from './components/Password/SignUp';
 import UserDetail from './components/User/UserDetail';
 
 // /about
-import About from './components/About/About'
+import About from './components/About/About';
 
 const App = () => {
 	// let history = useHistory();
 
 	const [error, setError] = useState(false);
 	const [token, setToken] = useState('');
-
+	const [artworkAllLength, setArtworkAllLength] = useState()
 
 	async function handleSignOut() {
 		setToken(null);
@@ -38,6 +40,31 @@ const App = () => {
 	function scrollUp() {
 		window.scrollTo(0, 0);
 	}
+
+	useEffect(() => {
+		fetchMyApi();
+		// eslint-disable-next-line
+	}, []);
+
+	async function fetchMyApi() {
+		await fetch(`${APIURL}/api/work`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json',
+				// Authorization: `Bearer ${localStorage.getItem('token')}`,
+			},
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				setArtworkAllLength(data.length);
+			})
+			.catch(() => {
+				setError(true);
+			});
+	}
+
+
 	// convert data to Title Case
 	function toTitleCase(str) {
 		return str
@@ -69,91 +96,94 @@ const App = () => {
 				}}
 			/>
 			<main>
-				<Route exact path='/' component={Home} />
-				<Route exact path='/about' component={About} />
-				<Route
-					exact
-					path='/artwork-category/:category'
-					render={() => {
-						return (
-							<ArtworkCategorySub
-								toTitleCase={toTitleCase}
-								scrollUp={scrollUp}
-								token={token}
-							/>
-						);
-					}}
-				/>
-				<Route
-					exact
-					path='/artwork-create'
-					render={() => {
-						return <ArtworkCreate toTitleCase={toTitleCase} token={token} />;
-					}}
-				/>
-				<Route
-					exact
-					path='/artwork/:id'
-					render={(routerProps) => {
-						return (
-							<ArtworkDetail
-								{...routerProps}
-								scrollUp={scrollUp}
-								toTitleCase={toTitleCase}
-								token={token}
-							/>
-						);
-					}}
-				/>
-				<Route
-					exact
-					path='/artwork/:id/edit'
-					render={(routerProps) => {
-						return (
-							<ArtworkUpdate
-								{...routerProps}
-								scrollUp={scrollUp}
-								toTitleCase={toTitleCase}
-								token={token}
-							/>
-						);
-					}}
-				/>
-				<Route
-					exact
-					path='/artwork-all'
-					render={() => {
-						return (
-							<ArtworkAll
-								toTitleCase={toTitleCase}
-								scrollUp={scrollUp}
-								token={token}
-							/>
-						);
-					}}
-				/>
-				<Route exact path='/signup' component={SignUp} />
-				<Route
-					exact
-					path='/signin'
-					render={(props) => {
-						return <SignIn setToken={setToken} />;
-					}}
-				/>{' '}
-				<Route
-					exact
-					path='/user'
-					render={(routerProps) => {
-						return (
-							<UserDetail
-								match={routerProps.match}
-								userToken={token}
-								handleSignOut={handleSignOut}
-								scrollUp={scrollUp}
-							/>
-						);
-					}}
-				/>
+				<Switch>
+					<Route exact path='/' component={Home} />
+					<Route exact path='/about' component={About} />
+					<Route
+						exact
+						path='/artwork-category/:category'
+						render={() => {
+							return (
+								<ArtworkCategorySub
+									toTitleCase={toTitleCase}
+									scrollUp={scrollUp}
+									token={token}
+								/>
+							);
+						}}
+					/>
+					<Route
+						exact
+						path='/artwork-create'
+						render={() => {
+							return <ArtworkCreate toTitleCase={toTitleCase} token={token} />;
+						}}
+					/>
+					<Route
+						exact
+						path='/artwork/:id'
+						render={(routerProps) => {
+							return (
+								<ArtworkDetail
+									{...routerProps}
+									scrollUp={scrollUp}
+									toTitleCase={toTitleCase}
+									token={token}
+									artworkAllLength={artworkAllLength}
+								/>
+							);
+						}}
+					/>
+					<Route
+						exact
+						path='/artwork/:id/edit'
+						render={(routerProps) => {
+							return (
+								<ArtworkUpdate
+									{...routerProps}
+									scrollUp={scrollUp}
+									toTitleCase={toTitleCase}
+									token={token}
+								/>
+							);
+						}}
+					/>
+					<Route
+						exact
+						path='/artwork-all'
+						render={() => {
+							return (
+								<ArtworkAll
+									toTitleCase={toTitleCase}
+									scrollUp={scrollUp}
+									token={token}
+								/>
+							);
+						}}
+					/>
+					<Route exact path='/signup' component={SignUp} />
+					<Route
+						exact
+						path='/signin'
+						render={(props) => {
+							return <SignIn setToken={setToken} />;
+						}}
+					/>{' '}
+					<Route
+						exact
+						path='/user'
+						render={(routerProps) => {
+							return (
+								<UserDetail
+									match={routerProps.match}
+									userToken={token}
+									handleSignOut={handleSignOut}
+									scrollUp={scrollUp}
+								/>
+							);
+						}}
+					/>
+				</Switch>
 			</main>
 			<footer>{/* <Route path='*' component={Footer} /> */}</footer>
 		</>

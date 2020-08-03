@@ -46,6 +46,11 @@
 	margin: 0 auto;
 	padding-top: 30px;
 	opacity: 0.5;
+	transition: .5s;
+}
+
+.upload-icon:hover {
+	opacity: 1;
 }
 
 .drop-message {

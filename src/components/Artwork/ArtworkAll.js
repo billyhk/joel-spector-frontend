@@ -11,18 +11,6 @@ const ArtworkAll = (props) => {
 	const [artwork, setArtwork] = useState([]);
 	const [error, setError] = useState(false);
 
-	/*
-	let fullCategory = artwork.map((item) => {
-		if (item.artworkSubcategory === '' || item.artworkSubcategory === null) {
-			return props.toTitleCase(item.artworkCategory);
-		} else {
-			return `${props.toTitleCase(item.artworkCategory)}: ${props.toTitleCase(
-				item.artworkSubcategory
-			)}`;
-		}
-	});
-	*/
-
 	useEffect(() => {
 		props.scrollUp();
 		fetchMyApi();
