@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { createHashHistory } from 'history';
-// import DropArea from '../DropArea/DropArea';
 import Dropzone from '../Dropzone/Dropzone';
 
 const ArtworkForm = (props) => {
 	const history = createHashHistory();
 
 	useEffect(() => {
+		// initialize the absence of the second dropdown menu for the ampty form
 		if (props.setSecondDropdown) {
 			props.setSecondDropdown(false);
 		} // eslint-disable-next-line
@@ -25,7 +25,6 @@ const ArtworkForm = (props) => {
 						className='form-input'
 						id='artworkSubcategoryInput'
 						onChange={(event) => {
-							props.handleSecondaryDropdownSelect(event);
 							props.handleChange(event);
 						}}>
 						{' '}

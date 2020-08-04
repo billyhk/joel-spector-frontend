@@ -19,6 +19,7 @@ const SignIn = (props) => {
 		setUser({ ...user, [e.target.name]: e.target.value });
 	};
 
+	// POST request to /login to request a user token; save the token for user priveleges in other components
 	const signIn = (e) => {
 		e.preventDefault();
 		setSubmit(true);
@@ -43,7 +44,8 @@ const SignIn = (props) => {
 	};
 
 	if (redirectToReferrer) {
-		// return <Redirect to='/user' />;
+		// redirect to user if there is user detail page
+			// return <Redirect to='/user' />;
 		return <Redirect to='/' />;
 	}
 

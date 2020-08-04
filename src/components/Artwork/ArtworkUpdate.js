@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Route, Redirect } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { APIURL } from '../../config';
-import { createHashHistory } from 'history';
 
 import ArtworkCategoryNav from './ArtworkCategoryNav';
 import ArtworkForm from './ArtworkForm';
 
 const ArtworkUpdate = (props) => {
-	const history = createHashHistory();
-
+	// initialize current artwork as an empty object
 	const [artwork, setArtwork] = useState({});
-	const [createdId, setCreatedId] = useState(null);
 
+	// set createdID after PUT request to be used for Redirect to detail
+	const [createdId, setCreatedId] = useState(null);
 	const [error, setError] = useState(false);
 
+	// take the current artworkId from routerProps.match
 	const artworkId = props.match.params.id;
+
+	// set the fullCategory of this work; the properties of artworkCategory and artworkSubcategory in existing works can not be changed by the user with this form
 	const [fullCategory, setFullCategory] = useState('');
 
 	useEffect(() => {
@@ -44,6 +46,7 @@ const ArtworkUpdate = (props) => {
 			});
 	}
 
+	// instead of a dropdown menu to select category, the fullCategory will exist as text
 	let formSelectTag = (
 		<h3 className='artwork-update-fullCategory'>{fullCategory}</h3>
 	);
@@ -77,6 +80,10 @@ const ArtworkUpdate = (props) => {
 				setError(true);
 			});
 	};
+
+	if (createdId) {
+		return <Redirect to={`/artwork/${createdId}`} />;
+	}
 
 	return (
 		<div className='artwork-subcat-container'>

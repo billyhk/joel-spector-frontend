@@ -33,7 +33,7 @@ const ArtworkAll = (props) => {
 				setError(true);
 			});
 	}
-	// data gets passed into the MDBDataTable
+	// set the MDB Table headers labels and sizes
 	const data = {
 		columns: [
 			{
@@ -61,8 +61,8 @@ const ArtworkAll = (props) => {
 				width: 400,
 			},
 		],
+		// set the data for each column of the MBD Table
 		rows: artwork.map((item, i) => {
-			// the table must include links to the ArtworkDetail.js 
 			let idUrl = `/artwork/${item.id}`;
 			return {
 				id: item.id,

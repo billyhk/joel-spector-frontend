@@ -94,7 +94,7 @@ const Dropzone = (props) => {
 		if (size === 0) {
 			return '0 Bytes';
 		}
-		const k = 4096;
+		const k = 8192;
 		const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
 		const i = Math.floor(Math.log(size) / Math.log(k));
 		return parseFloat((size / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
@@ -135,6 +135,7 @@ const Dropzone = (props) => {
 		modalImageRef.current.style.backgroundImage = 'none';
 	};
 
+	// set the form data, which includes only three properties: key, acl, and file
 	const uploadFiles = async (e) => {
 		e.preventDefault();
 		uploadModalRef.current.style.display = 'block';
@@ -172,12 +173,6 @@ const Dropzone = (props) => {
 		}
 	};
 
-	/*
-				<input type='file' name='file' /> <br />
-			<input type='input' name='key' value={`artwork-hi-res/${filename}`} />
-			<input type='submit' name='submit' value='Upload to Amazon S3' />
-
-	*/
 	const closeUploadModal = () => {
 		uploadModalRef.current.style.display = 'none';
 	};
@@ -252,7 +247,6 @@ const Dropzone = (props) => {
 					ref={modalImageRef}
 					onClick={() => closeModal()}>
 					{' '}
-					{/* <span className='close' >X</span> */}
 				</div>
 			</div>
 

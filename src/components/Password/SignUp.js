@@ -11,7 +11,6 @@ const SignUp = (props) => {
 		adminPassword: '',
 	};
 	const [user, setUser] = useState(initialUserState);
-
 	const [adminValid, setAdminValid] = useState(true);
 	const [valid, setValid] = useState(true);
 	const [submit, setSubmit] = useState(false);
@@ -19,6 +18,7 @@ const SignUp = (props) => {
 	const [redirectToReferrer, setRedirectToReferrer] = useState(false);
 	const [dropdownResult, setDropdownResult] = useState(null);
 
+	// if signing up as an admin, prompt the user for an admin password; if attempting to sign is without selecting 'yes', user is told only admins can sign up
 	const handleDropdownSelect = (e) => {
 		setDropdownResult(
 			e.target.value === 'Yes' ? (
@@ -39,6 +39,7 @@ const SignUp = (props) => {
 		);
 	};
 
+	// check to see if passwords match and that the admin password is correct, then call handleSubmit()
 	const checkPassword = (e) => {
 		e.preventDefault();
 		setSubmit(true);
@@ -56,12 +57,6 @@ const SignUp = (props) => {
 		}
 	};
 
-	// const handleKeyDown = (e) => {
-	// 	if (e.key === 'Enter') {
-	// 		checkPassword();
-	// 	}
-	// };
-
 	const handleChange = (e) => {
 		setUser({ ...user, [e.target.name]: e.target.value });
 	};
@@ -77,7 +72,7 @@ const SignUp = (props) => {
 				password: user.password,
 			}),
 		})
-			// .then((res) => res.json())
+			// .then((res) => res.json()) //only if there is json in res body
 			.then((res) => {
 				if (res.status === 200) {
 					setRedirectToReferrer(true);
@@ -88,6 +83,7 @@ const SignUp = (props) => {
 			.catch(console.error);
 	};
 
+	// redirect user to SignIn form if register is successful
 	if (redirectToReferrer) {
 		return <Redirect to='/signin' />;
 	}

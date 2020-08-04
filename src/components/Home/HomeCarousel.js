@@ -9,6 +9,7 @@ import {
 	MDBContainer,
 } from 'mdbreact';
 
+// use local images so you can manually resize them uniformly
 import Garden from '../../component-images/home/in-the-garden.jpg';
 import Beach from '../../component-images/home/on-the-beach.jpg';
 import Reading2 from '../../component-images/home/rowena-reading-2.jpg';

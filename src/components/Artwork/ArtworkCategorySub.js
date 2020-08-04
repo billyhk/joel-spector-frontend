@@ -3,8 +3,6 @@ import { Link, Route } from 'react-router-dom';
 import { APIURL } from '../../config';
 import ArtworkCategoryNav from './ArtworkCategoryNav';
 
-// import artworkData from './data/jspectDB.json';
-
 const ArtworkSubcategory = (props) => {
 	const [artwork, setArtwork] = useState([]);
 	const [error, setError] = useState(false);
@@ -43,15 +41,6 @@ const ArtworkSubcategory = (props) => {
 		);
 	});
 
-	// if (
-	// 	thisCategory[0].artworkSubcategory !== '' ||
-	// 	thisCategory[0].artworkSubcategory !== null
-	// ) {
-	// 	setIsSubcategory(false);
-	// } else {
-	// 	setIsSubcategory(true);
-	// }
-
 	//reduce the full array of artworkCategory to multiple subcategory arrays
 	let subCategories = thisCategory.reduce((r, a) => {
 		r[a.artworkSubcategory] = [...(r[a.artworkSubcategory] || []), a];
@@ -59,28 +48,12 @@ const ArtworkSubcategory = (props) => {
 	}, {});
 
 	// the gallery of images for each category
-	// this is the jsx that we need for this page
-
-	// if there's no subcategory, just return the full gallery for this category, otherwise return the items divided by their subCategory
-
-	/* UNCATEGORIZED GALLERY */
-
-	// let artworkCategoryGallery = thisCategory.map((item, i) => {
-	// 	return (
-	// <Link to={`/artwork/${item.id}`} key={i}>
-	// 	<img
-	// 		alt={item.title}
-	// 		src={item.imgUrlLo ? item.imgUrlLo : item.imgUrlHi}
-	// 	/>
-	// 	<p>{item.title}</p>
-	// </Link>
-	// 	);
-	// });
 
 	/* CATEGORIZED GALLERY */
 
 	let artworkCategoryGallery = Object.entries(subCategories).map(
 		([key, value]) => {
+			// if there is a subcategory return the items divided by their subCategory
 			if (key !== 'null') {
 				return (
 					<>
@@ -102,6 +75,7 @@ const ArtworkSubcategory = (props) => {
 					</>
 				);
 			} else {
+				// if there's no subcategory, just return the full gallery for this category
 				return (
 					<div className='artwork-gallery-section'>
 						{value.map((item) => {
