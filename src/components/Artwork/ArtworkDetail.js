@@ -6,12 +6,19 @@ import ArtworkCategoryNav from './ArtworkCategoryNav';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 const ArtworkDetail = (props) => {
+	// used for goBack()
 	const history = createHashHistory();
 
+	//set artwork by ID
 	const [artwork, setArtwork] = useState({});
+
 	const [deleted, setDeleted] = useState(false);
 	const [error, setError] = useState(false);
+
+	// for displaying the both artwork.artworkCategory and artwork.artworkSubcategory in the same line
 	const [fullCategory, setFullCategory] = useState('');
+
+	// routerProps from react-router-dom
 	const artworkId = props.match.params.id;
 
 	useEffect(() => {
@@ -20,6 +27,7 @@ const ArtworkDetail = (props) => {
 		// eslint-disable-next-line
 	}, []);
 
+	// make a fetch to get by ID
 	async function fetchMyApi() {
 		const url = `${APIURL}/api/work/${artworkId}`;
 		await fetch(url, {
@@ -40,13 +48,15 @@ const ArtworkDetail = (props) => {
 				setError(true);
 			});
 	}
-	console.log(artwork);
+	console.log('Current Work: ', artwork);
 
+	// make a fetch to delete by ID
 	const onDeleteArtwork = (event) => {
 		let confirm = prompt(
 			"This action will delete the current work. Please type 'confirm' to delete",
 			''
 		);
+		// make user have to confirm before deleting
 		if (confirm === 'confirm') {
 			const url = `${APIURL}/api/work/${artworkId}`;
 			fetch(url, {
@@ -63,10 +73,12 @@ const ArtworkDetail = (props) => {
 		}
 	};
 
+	// redirect to artwork-all after deleting
 	if (deleted) {
 		return <Redirect to={`/artwork-all`} />;
 	}
 
+	// refresh the page to render the new artwork on artwork-back and artwork-forward buttons
 	const artworkRefresh = () => {
 		fetchMyApi()
 			.then(() => {
@@ -77,6 +89,7 @@ const ArtworkDetail = (props) => {
 			});
 	};
 
+	// go back button
 	const goBack = () => {
 		history.goBack();
 		artworkRefresh();
