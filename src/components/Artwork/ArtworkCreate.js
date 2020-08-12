@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, Route, Redirect } from 'react-router-dom';
-import { APIURL } from '../../config';
+// import { APIURL } from '../../config';
 
 import ArtworkCategoryNav from './ArtworkCategoryNav';
 import ArtworkForm from './ArtworkForm';
@@ -20,6 +20,7 @@ const ArtworkCreate = (props) => {
 
 	// initialize the POST data with the empty form
 	const [artwork, setArtwork] = useState(initialArtworkState);
+	const [fullCategory, setFullCategory] = useState('');
 
 	// set createdID of new work after POST request to be used for Redirect to detail
 	const [createdId, setCreatedId] = useState(null);
@@ -44,12 +45,13 @@ const ArtworkCreate = (props) => {
 	// make a POST request to submit a new artwork, save the new id to use for <Redirect /> later
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		const url = `${APIURL}/api/work`;
+		const url = `/api/work`;
 
 		fetch(url, {
 			method: 'POST',
 			headers: {
 				'Content-type': 'application/json; charset=utf-8',
+				Authorization: `Bearer ${localStorage.getItem('token')}`,
 			},
 			body: JSON.stringify(artwork),
 		})
@@ -63,6 +65,12 @@ const ArtworkCreate = (props) => {
 	};
 
 	// create options for dropdown menus for artwork categories and subcategories
+	const [secondDropdown, setSecondDropdown] = useState(false);
+	const [secondFormSelectTagOptions, setSecondFormSelectTagOptions] = useState(
+		''
+	);
+	const [selectedCategory, setSelectedCategory] = useState('');
+	const [targetValue, setTargetValue] = useState([]);
 	const artworkCategories = {
 		portraits: ['individual', 'group', 'children'],
 		paintings: ['people', 'nudes', 'scenes', 'still_life'],
@@ -79,17 +87,6 @@ const ArtworkCreate = (props) => {
 				</option>
 			);
 		}
-	);
-
-	// set the corresponding subcategories array based on the selected item from the first dropdown
-	const [targetValue, setTargetValue] = useState([]);
-
-	// dynamically render a second dropdown for subcategories after a category is chosen from the first dropdown
-	const [secondDropdown, setSecondDropdown] = useState(false);
-
-	// render the correct subcategory options based on the chosen category from the first dropdown
-	const [secondFormSelectTagOptions, setSecondFormSelectTagOptions] = useState(
-		''
 	);
 
 	// build the jsx for the first dropdown menu in the form (choose category)
@@ -112,6 +109,11 @@ const ArtworkCreate = (props) => {
 
 	// when an item in the first dropdown is selected, the second dropdown
 	const handleDropdownSelect = (e) => {
+		if (artworkCategories[e.target.value].length === 1) {
+			setFullCategory(props.toTitleCase(artworkCategories[e.target.value][0]));
+		}
+		setSelectedCategory(e.target.value);
+		setTargetValue(artworkCategories[e.target.value]);
 		setSecondDropdown(true);
 		setSecondFormSelectTagOptions(
 			artworkCategories[e.target.value].map((item) => {
@@ -122,7 +124,14 @@ const ArtworkCreate = (props) => {
 		artwork.artworkSubcategory = '';
 	};
 
-	// if the item was created in the db, redirect user to its detail page
+	const handleSecondaryDropdownSelect = (e) => {
+		setFullCategory(
+			`${props.toTitleCase(selectedCategory)}: ${props.toTitleCase(
+				e.target.value
+			)}`
+		);
+	};
+
 	if (createdId) {
 		return <Redirect to={`/artwork/${createdId}`} />;
 	}
@@ -149,10 +158,12 @@ const ArtworkCreate = (props) => {
 							handleChange={handleChange}
 							handleSubmit={handleSubmit}
 							toTitleCase={props.toTitleCase}
+							setFullCategory={setFullCategory}
 							setSecondDropdown={setSecondDropdown}
 							formSelectTag={formSelectTag}
 							secondDropdown={secondDropdown}
 							targetValue={targetValue}
+							handleSecondaryDropdownSelect={handleSecondaryDropdownSelect}
 							secondFormSelectTagOptions={secondFormSelectTagOptions}
 							setImgUrl={setImgUrl}
 						/>

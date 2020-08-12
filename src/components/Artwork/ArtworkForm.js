@@ -49,7 +49,7 @@ const ArtworkForm = (props) => {
 					className='form-img'
 				/>
 			) : null}
-			<Dropzone setImgUrl={props.setImgUrl}/>
+			<Dropzone setImgUrl={props.setImgUrl} />
 			<label>Date</label>
 			<input
 				value={props.artwork.date}

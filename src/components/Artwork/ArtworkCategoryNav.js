@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 // for easier navigation, render a nav bar for the items just in the artwork main Nav's artwork dropdown
 
-// toggle active to highlight the current selection 
-	// ('active' was taken by bootstrap so used 'active1' instead)
+// toggle active to highlight the current selection
+// ('active' was taken by bootstrap so used 'active1' instead)
 
 const ArtworkCategoryNav = (props) => (
 	<nav className='subnav-container'>

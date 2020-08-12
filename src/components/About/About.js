@@ -7,7 +7,6 @@ const About = () => {
 	const bioSection3 = `Joel graduated from the Fashion Institute of Technology and attended the Art Students League. He started his career by doing fashion illustrations and advertisements, later on his work would appear in children’s books, magazines, and newspapers. In 1990, Joel Spector moved to New Milford, Connecticut with his wife, Rowena, where they would raise their four children. He received his MFA at Western Connecticut State University in 2005.`;
 	const bioSection4 = `As his artistic ability grew, he focused his career in portraiture and oil painting, and taught his craft at the Art League of Long Island and the Pastel Society of America. He was a member of the Painting Group of Manhattan, studied under Aaron Shikler and David Levine. Joel died on October 13, 2016. His art was a constant search for love, humanity, and compassion.`;
 
-
 	// the following bioSectionNPhotos arrays are divided by which thumbnail-carousel component it will be included in
 	const bioSection1Photos = [
 		{
@@ -66,27 +65,27 @@ const About = () => {
 		},
 		{
 			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover4.png',
-			thumbnail: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover4.png',
+			// thumbnail: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover4.png',
 			alt: '',
 		},
 		{
 			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover5.png',
-			thumbnail: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover5.png',
+			// thumbnail: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover5.png',
 			alt: '',
 		},
 		{
 			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover6.png',
-			thumbnail: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover6.png',
+			// thumbnail: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover6.png',
 			alt: '',
 		},
 		{
 			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover7.png',
-			thumbnail: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover7.png',
+			// thumbnail: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover7.png',
 			alt: '',
 		},
 		{
 			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover8.jpg',
-			thumbnail: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover9.jpg',
+			// thumbnail: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover9.jpg',
 			alt: '',
 		},
 	];
@@ -101,27 +100,27 @@ const About = () => {
 		},
 		{
 			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-7.jpg',
-			thumbnail:
-				'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-7.jpg',
+			// thumbnail:
+			// 	'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-7.jpg',
 			alt: '',
 		},
 		{
 			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-5.jpg',
-			thumbnail:
-				'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-5.jpg',
+			// thumbnail:
+			// 	'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-5.jpg',
 			alt: '',
 		},
 		{
 			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-1.jpg',
-			thumbnail:
-				'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-1.jpg',
+			// thumbnail:
+			// 	'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-1.jpg',
 
 			alt: '',
 		},
 		{
 			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-3.jpg',
-			thumbnail:
-				'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-3.jpg',
+			// thumbnail:
+			// 'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-3.jpg',
 
 			alt: '',
 		},
@@ -134,22 +133,22 @@ const About = () => {
 		},
 		{
 			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-4.jpg',
-			thumbnail:
-				'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-4.jpg',
+			// thumbnail:
+			// 	'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-4.jpg',
 
 			alt: '',
 		},
 		{
 			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-2.jpg',
-			thumbnail:
-				'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-2.jpg',
+			// thumbnail:
+			// 	'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-2.jpg',
 
 			alt: '',
 		},
 		{
 			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-6.jpg',
-			thumbnail:
-				'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-6.jpg',
+			// thumbnail:
+			// 	'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-munsel-6.jpg',
 
 			alt: '',
 		},
@@ -171,7 +170,7 @@ const About = () => {
 					style={{
 						display: 'block',
 						minHeight: '1px',
-						width: '350px',
+						width: '300px',
 						margin: '0 2rem',
 						padding: '2vmin',
 						background: 'lightgrey',
@@ -185,7 +184,7 @@ const About = () => {
 					style={{
 						display: 'block',
 						minHeight: '1px',
-						width: '350px',
+						width: '300px',
 						margin: '0 2rem',
 						padding: '2vmin',
 						background: 'lightgrey',
@@ -201,7 +200,7 @@ const About = () => {
 					style={{
 						display: 'block',
 						minHeight: '1px',
-						width: '350px',
+						width: '300px',
 						margin: '0 2rem',
 						padding: '2vmin',
 						background: 'lightgrey',
@@ -214,7 +213,7 @@ const About = () => {
 				style={{
 					display: 'block',
 					minHeight: '1px',
-					width: '70vw',
+					width: '55vw',
 					margin: '0 auto',
 					padding: '2vmin',
 					borderRadius: '5vmin',
@@ -226,7 +225,7 @@ const About = () => {
 					style={{
 						display: 'block',
 						minHeight: '1px',
-						width: '350px',
+						width: '300px',
 						margin: '0 2rem',
 						padding: '2vmin',
 						background: 'lightgrey',
@@ -240,7 +239,7 @@ const About = () => {
 				style={{
 					display: 'block',
 					minHeight: '1px',
-					width: '70vw',
+					width: '55vw',
 					margin: '0 auto',
 					padding: '2vmin',
 					borderRadius: '5vmin',

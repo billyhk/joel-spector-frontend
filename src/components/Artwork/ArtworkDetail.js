@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { APIURL } from '../../config';
+// import { APIURL } from '../../config';
 import { Link, Route, Redirect } from 'react-router-dom';
 import { createHashHistory } from 'history';
 import ArtworkCategoryNav from './ArtworkCategoryNav';
@@ -18,23 +18,31 @@ const ArtworkDetail = (props) => {
 	// for displaying the both artwork.artworkCategory and artwork.artworkSubcategory in the same line
 	const [fullCategory, setFullCategory] = useState('');
 
+	// set artwork Ids because to handle routing between non-consecutive IDs
+	const [artworkIds, setArtworkIds] = useState([]);
+
 	// routerProps from react-router-dom
 	const artworkId = props.match.params.id;
 
+	// save this artwork id to state on each fetch to api/work/id
+	const [thisArtworkId, setThisArtworkId] = useState(null);
+
 	useEffect(() => {
 		props.scrollUp();
-		fetchMyApi();
+		getThisArtwork();
+		getArtworkIds();
 		// eslint-disable-next-line
 	}, []);
 
 	// make a fetch to get by ID
-	async function fetchMyApi() {
-		const url = `${APIURL}/api/work/${artworkId}`;
+	async function getThisArtwork() {
+		const url = `/api/work/${artworkId}`;
 		await fetch(url, {
 			method: 'GET',
 		})
 			.then((response) => response.json())
 			.then((data) => {
+				console.log(data);
 				setArtwork(data);
 				setFullCategory(
 					data.artworkSubcategory === '' || data.artworkSubcategory === null
@@ -43,12 +51,33 @@ const ArtworkDetail = (props) => {
 								data.artworkSubcategory
 						  )}`
 				);
+				setThisArtworkId(data.id);
 			})
 			.catch(() => {
 				setError(true);
 			});
 	}
-	console.log('Current Work: ', artwork);
+
+	async function getArtworkIds() {
+		await fetch(`/api/work`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json',
+			},
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				setArtworkIds(
+					data.map((item) => {
+						return item.id;
+					})
+				);
+			})
+			.catch(() => {
+				setError(true);
+			});
+	}
 
 	// make a fetch to delete by ID
 	const onDeleteArtwork = (event) => {
@@ -58,15 +87,16 @@ const ArtworkDetail = (props) => {
 		);
 		// make user have to confirm before deleting
 		if (confirm === 'confirm') {
-			const url = `${APIURL}/api/work/${artworkId}`;
+			const url = `/api/work/${artworkId}`;
 			fetch(url, {
 				method: 'DELETE',
 				headers: {
 					'Content-Type': 'application/json',
+					Authorization: `Bearer ${localStorage.getItem('token')}`,
 					Accept: 'application/json',
 				},
 			})
-				.then((res) => {
+				.then(() => {
 					setDeleted(true);
 				})
 				.catch(console.error);
@@ -80,7 +110,10 @@ const ArtworkDetail = (props) => {
 
 	// refresh the page to render the new artwork on artwork-back and artwork-forward buttons
 	const artworkRefresh = () => {
-		fetchMyApi()
+		getArtworkIds()
+			.then(() => {
+				getThisArtwork();
+			})
 			.then(() => {
 				window.location.reload();
 			})
@@ -94,6 +127,24 @@ const ArtworkDetail = (props) => {
 		history.goBack();
 		artworkRefresh();
 	};
+
+	console.log(
+		// get the id of the current work
+		thisArtworkId,
+
+		// get the array of all artwork Ids
+		artworkIds,
+
+		// get the index of this artwork in the array of all artworks
+		artworkIds.indexOf(thisArtworkId),
+
+		// get the id of the current work from the array of artworkIds
+		//artworkIds at the index of the index of artworkIds at which the value is the current Id. the value at this index should be the same as thisArtworkId
+		artworkIds[artworkIds.indexOf(thisArtworkId)],
+
+		// the length of artworkIds will be compared with the index of the current artwork to determine if there should be a back/forward button (i.e. first item does not get a previous button; last item does not get a next button)
+		artworkIds.length
+	);
 
 	return (
 		<div className='artwork-detail-container-container'>
@@ -116,16 +167,20 @@ const ArtworkDetail = (props) => {
 						<h4 className='artwork-detail-description'>
 							{artwork.description}
 						</h4>
-						{artworkId > 1 ? (
+						{artworkIds.indexOf(thisArtworkId) > 0 ? (
 							<Link
-								to={`/artwork/${parseInt(artworkId) - 1}`}
+								to={`/artwork/${
+									artworkIds[artworkIds.indexOf(thisArtworkId) - 1]
+								}`}
 								onClick={artworkRefresh}>
 								<FaArrowLeft className='detail-pointer-arrow' />
 							</Link>
 						) : null}{' '}
-						{artworkId < props.artworkAllLength ? (
+						{artworkIds.indexOf(thisArtworkId) + 1 < artworkIds.length ? (
 							<Link
-								to={`/artwork/${parseInt(artworkId) + 1}`}
+								to={`/artwork/${
+									artworkIds[artworkIds.indexOf(thisArtworkId) + 1]
+								}`}
 								onClick={artworkRefresh}>
 								<FaArrowRight className='detail-pointer-arrow' />
 							</Link>
