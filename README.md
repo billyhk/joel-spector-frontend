@@ -1,68 +1,52 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Joel Spector
 
-## Available Scripts
+## Project Description
 
-In the project directory, you can run:
+Digital art gallery to view Joel Spector's artwork. Admin User can perform CRUD operations with the artwork in the database.
 
-### `npm start`
+## Wireframes
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![Home Page](/public/readme-images/home-page-wireframe-png.png)
+![Artwork Main](/public/readme-images/artwork-main-wireframe-png.png)
+![Artwork Category](/public/readme-images/artwork-category-wireframe-png.png)
+![Artwork Sub-Category](/public/readme-images/artwork-subcategory-all-works-png.png)
+![Artwork Detail](/public/readme-images/artwork-detail-individual-png.png)
+![Artwork Form](/public/readme-images/artwork-form-png.png)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## User Stories
 
-### `npm test`
+_**MVP User Stories**_  
+-_As a user, I want to view high quality images of Joel Spector's artwork._  
+-_As a user, I want to add an work that is not yet in the database._  
+-_As a user, I want to be able to submit a donation._
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+_**Post MVP Stretch Goals**_  
+-_As a user, I want to securely create an account._  
+-_As a user, I want to add merchandise to my cart and choose a payment method at checkout._
 
-### `npm run build`
+## Sample JSON data
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+GET api/artwork
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+```json
+[{
+    "id": "1",
+    "category": "Paintings: People",
+    "title": "Portrait of Ari",
+    "sizeHeight": "9",
+    "sizeWidth": "6",
+    "imgUrl": "example.jpg",
+},
+{
+    "id": "2",
+    "category": "Paintings: People",
+    "title": "Ben",
+    "sizeHeight": "24",
+    "sizeWidth": "24",
+    "imgUrl": "example2.jpg"
+}]
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## React Component Hierarchy
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+![Component Hierarchy](/public/readme-images/component-tree-png.png)
