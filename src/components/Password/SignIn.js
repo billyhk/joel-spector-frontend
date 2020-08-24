@@ -21,10 +21,13 @@ const SignIn = (props) => {
 
 	const handleChange = (e) => {
 		e.persist();
-		setUser({ ...user, [e.target.name]: e.target.value });
+		setUser({
+			...user,
+			[e.target.name]: e.target.value,
+		});
 	};
 
-	// POST request to /login to request a user token; save the token for user priveleges in other components
+	// POST request to /login to request a user token; save the token for user privileges in other components
 	const signIn = (e) => {
 		e.preventDefault();
 		setSubmit(true);
@@ -39,7 +42,7 @@ const SignIn = (props) => {
 			.then((token) => {
 				if (token) {
 					props.setToken(token);
-					localStorage.setItem('token', token);
+					sessionStorage.setItem('token', token);
 					setRedirectToReferrer(true);
 				} else {
 					setSignInError(true);

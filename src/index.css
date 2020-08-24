@@ -13,6 +13,7 @@ body {
 
 main {
 	padding-top: 1rem;
+	min-height: 100vh;
 }
 
 /* 
@@ -91,7 +92,7 @@ main {
 #navbar,
 .nav-caption {
 	font-family: 'Ubuntu';
-	font-size: 2vmin;
+	font-size: 1rem;
 }
 
 .nav-caption {
@@ -397,12 +398,26 @@ main {
 //////////////////////////////////////
  */
 
+/* #valid-password, #invalid {
+	text-align: center
+} */
+
 #valid {
 	display: none;
 }
 
 #invalid {
 	color: red;
+}
+
+#valid-password {
+	color: green;
+}
+
+.password-must-contain {
+	font-family: 'ubuntu';
+	padding-bottom: 0;
+	margin-bottom: 0;
 }
 
 .logged-in {
@@ -435,7 +450,7 @@ main {
 	width: 60vw;
 }
 
-.sign-in-text {
+.sign-in-text, .sign-in-error {
 	text-align: center;
 	margin: 0.5rem;
 }
@@ -466,6 +481,10 @@ main {
 	justify-content: center;
 }
 
+.sign-up-error {
+	text-align: center;
+}
+
 /* 
 ///////////////////////////////
 //////////// About ////////////
@@ -483,26 +502,30 @@ main {
 }
 
 .about-bio-section {
+	display: block;
+	align-items: center;
+	justify-content: center;
+	padding: 0 1.5vmin;
+}
+
+.about-bio-section * {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-}
-
-#about-grid-section {
-	display: grid;
-}
+	min-height: 35vmin;
+	margin: 0;
+	padding: 0;
+} 
 
 .about-bio-section-text {
-	margin: 1rem;
-	padding: 1rem;
+	margin: 0 1rem;
+	padding: 0 1rem;
 	font-family: arial;
 	font-weight: 400;
-	font-size: 2.5vmin;
+	font-size: 1.5rem;
 	letter-spacing: 0.1vmin;
 	text-indent: 8%;
 }
-
-
 
 /* 
 ///////////////////////////////
@@ -546,6 +569,13 @@ main {
 }
 
 @media only screen and (max-width: 1000px) {
+	.about-bio-section {
+		display: grid;
+		text-align: center;
+	}
+	.about-bio-section * {
+		/* min-height: 10px; */
+	}
 	.subnav-left > a,
 	.subnav-right > a {
 		font-size: 1rem;
@@ -554,12 +584,6 @@ main {
 	.size-inputs-labels {
 		display: grid;
 	}
-}
-
-@media only screen and (max-width: 660) {
-	/* #footer-title {
-		text-align: center;
-	} */
 }
 
 @media only screen and (max-width: 765px) {
@@ -572,6 +596,10 @@ main {
 	.logged-in {
 		font-size: 1rem;
 	}
+	/* .about-bio-section-text {
+		display: grid;
+		font-size: 1rem;
+	} */
 }
 
 @media only screen and (max-width: 600px) {

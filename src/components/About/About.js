@@ -16,6 +16,13 @@ const About = () => {
 			alt: 'Joel with gun',
 			caption: 'Joel with gun',
 		},
+		// {
+		// 	src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-dorana.JPG',
+		// 	thumbnail:
+		// 		'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-dorana.JPG',
+
+		// 	alt: 'Joel with Sister',
+		// },
 	];
 
 	const bioSection2Photos = [
@@ -23,7 +30,6 @@ const About = () => {
 			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-dorana.JPG',
 			thumbnail:
 				'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-dorana.JPG',
-
 			alt: 'Joel with Sister',
 		},
 	];
@@ -34,6 +40,12 @@ const About = () => {
 			thumbnail:
 				'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-father.JPG',
 			alt: 'Joel with baby',
+		},
+		{
+			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-profile.JPG',
+			// thumbnail:
+			// 	'https://jspect.s3.amazonaws.com/artwork-hi-res/joel-profile.JPG',
+			// alt: 'Joel Older Profile View',
 		},
 	];
 
@@ -48,29 +60,29 @@ const About = () => {
 
 	const bioSection3_3Photos = [
 		{
+			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover5.png',
+			thumbnail: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover5.png',
+			alt: '',
+		},
+		{
 			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/CaptainMorgan.jpg',
-			thumbnail:
-				'https://jspect.s3.amazonaws.com/artwork-hi-res/CaptainMorgan.jpg',
+			// thumbnail:
+			// 	'https://jspect.s3.amazonaws.com/artwork-hi-res/CaptainMorgan.jpg',
 			alt: '',
 		},
 		{
 			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover1.png',
-			thumbnail: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover1.png',
+			// thumbnail: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover1.png',
 			alt: '',
 		},
 		{
 			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover3.png',
-			thumbnail: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover3.png',
+			// thumbnail: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover3.png',
 			alt: '',
 		},
 		{
 			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover4.png',
 			// thumbnail: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover4.png',
-			alt: '',
-		},
-		{
-			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover5.png',
-			// thumbnail: 'https://jspect.s3.amazonaws.com/artwork-hi-res/Cover5.png',
 			alt: '',
 		},
 		{
@@ -126,8 +138,8 @@ const About = () => {
 		},
 		{
 			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/joel%2Bwallach.jpg',
-			thumbnail:
-				'https://jspect.s3.amazonaws.com/artwork-hi-res/joel%2Bwallach.jpg',
+			// thumbnail:
+			// 	'https://jspect.s3.amazonaws.com/artwork-hi-res/joel%2Bwallach.jpg',
 
 			alt: '',
 		},
@@ -154,8 +166,8 @@ const About = () => {
 		},
 		{
 			src: 'https://jspect.s3.amazonaws.com/artwork-hi-res/oaj-at-nac.jpg',
-			thumbnail:
-				'https://jspect.s3.amazonaws.com/artwork-hi-res/oaj-at-nac.jpg',
+			// thumbnail:
+			// 	'https://jspect.s3.amazonaws.com/artwork-hi-res/oaj-at-nac.jpg',
 
 			alt: '',
 		},
@@ -166,86 +178,24 @@ const About = () => {
 			<div className='about-title'>About the Artist</div>
 			<section className='about-bio-section'>
 				<p className='about-bio-section-text'>{bioSection1}</p>
-				<div
-					style={{
-						display: 'block',
-						minHeight: '1px',
-						width: '300px',
-						margin: '0 2rem',
-						padding: '2vmin',
-						background: 'lightgrey',
-						borderRadius: '5vmin',
-					}}>
-					<Gallery images={bioSection1Photos} enableImageSelection={false} />{' '}
-				</div>
+				<Gallery images={bioSection1Photos} enableImageSelection={false} />{' '}
 			</section>
 			<section className='about-bio-section'>
-				<div
-					style={{
-						display: 'block',
-						minHeight: '1px',
-						width: '300px',
-						margin: '0 2rem',
-						padding: '2vmin',
-						background: 'lightgrey',
-						borderRadius: '5vmin',
-					}}>
-					<Gallery images={bioSection2Photos} enableImageSelection={false} />{' '}
-				</div>
 				<p className='about-bio-section-text'>{bioSection2}</p>{' '}
+				<Gallery images={bioSection2Photos} enableImageSelection={false} />{' '}
 			</section>
 			<section className='about-bio-section'>
 				<p className='about-bio-section-text'>{bioSection3}</p>
-				<div
-					style={{
-						display: 'block',
-						minHeight: '1px',
-						width: '300px',
-						margin: '0 2rem',
-						padding: '2vmin',
-						background: 'lightgrey',
-						borderRadius: '5vmin',
-					}}>
-					<Gallery images={bioSection3_1Photos} enableImageSelection={false} />{' '}
-				</div>
+				<Gallery
+					images={bioSection3_3Photos}
+					enableImageSelection={false}
+				/>{' '}
+				<Gallery images={bioSection3_1Photos} enableImageSelection={false} />{' '}
 			</section>
-			<div
-				style={{
-					display: 'block',
-					minHeight: '1px',
-					width: '55vw',
-					margin: '0 auto',
-					padding: '2vmin',
-					borderRadius: '5vmin',
-				}}>
-				<Gallery images={bioSection3_3Photos} enableImageSelection={false} />{' '}
-			</div>
 			<section className='about-bio-section'>
-				<div
-					style={{
-						display: 'block',
-						minHeight: '1px',
-						width: '300px',
-						margin: '0 2rem',
-						padding: '2vmin',
-						background: 'lightgrey',
-						borderRadius: '5vmin',
-					}}>
-					<Gallery images={bioSection3_2Photos} enableImageSelection={false} />{' '}
-				</div>
 				<p className='about-bio-section-text'>{bioSection4}</p>{' '}
-			</section>
-			<div
-				style={{
-					display: 'block',
-					minHeight: '1px',
-					width: '55vw',
-					margin: '0 auto',
-					padding: '2vmin',
-					borderRadius: '5vmin',
-				}}>
 				<Gallery images={bioSection4Photos} enableImageSelection={false} />{' '}
-			</div>
+			</section>
 		</div>
 	);
 };
