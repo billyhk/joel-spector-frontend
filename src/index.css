@@ -450,7 +450,8 @@ main {
 	width: 60vw;
 }
 
-.sign-in-text, .sign-in-error {
+.sign-in-text,
+.sign-in-error {
 	text-align: center;
 	margin: 0.5rem;
 }
@@ -515,11 +516,10 @@ main {
 	min-height: 35vmin;
 	margin: 0;
 	padding: 0;
-} 
+}
 
 .about-bio-section-text {
-	margin: 0 1rem;
-	padding: 0 1rem;
+	margin: 0;
 	font-family: arial;
 	font-weight: 400;
 	font-size: 1.5rem;
@@ -575,6 +575,9 @@ main {
 	}
 	.about-bio-section * {
 		/* min-height: 10px; */
+	}
+	.about-bio-section-text {
+		margin: 1rem 0;
 	}
 	.subnav-left > a,
 	.subnav-right > a {
